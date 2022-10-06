@@ -39,4 +39,18 @@ public class UserService {
         return UserDtoList;
     }
 
+    public void save(UserDto userDto) throws Exception{
+        Connection con = DbUtils.getCollection();
+        Statement sqlFile = con.createStatement();
+        try {
+            // Bước 3: Tạo câu truy vấn
+            String selectSql = "INSERT INTO `user`( `Full_Name`, `Address`, `Email`, `Password`, `Role`) VALUES ('"+userDto.getFull_Name()+"','"+userDto.getAddress()+"','"+userDto.getEmail()+"','"+userDto.getPassword()+"',0 )";
+            // Bước 4; Run kết quả
+            sqlFile.execute(selectSql);
+        } finally {
+            // Bước 5: Đóng kết nối
+            sqlFile.close();
+            con.close();
+        }
+    }
 }
