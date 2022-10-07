@@ -44,7 +44,7 @@ public class UserService {
         Statement sqlFile = con.createStatement();
         try {
             // Bước 3: Tạo câu truy vấn
-            String selectSql = "INSERT INTO `user`( `Full_Name`, `Address`, `Email`, `Password`, `Role`) VALUES ('"+userDto.getFull_Name()+"','"+userDto.getAddress()+"','"+userDto.getEmail()+"','"+userDto.getPassword()+"',0 )";
+            String selectSql = "INSERT INTO `user`( `Full_Name`, `Address`, `Email`, `Password`, `Role`) VALUES ('"+userDto.getFull_Name()+"','"+userDto.getAddress()+"','"+userDto.getEmail()+"',PASSWORD('"+userDto.getPassword()+"'),0 )";
             // Bước 4; Run kết quả
             sqlFile.execute(selectSql);
         } finally {

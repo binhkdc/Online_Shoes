@@ -3,7 +3,7 @@
 <%@include file="/WEB-INF/views/layout/header.jsp"%>
 <div class="container">
     <span style="color: red">${message}</span>
-    <form method="post" class="row g-3 was-validated d-flex justify-content-center" novalidate action="save">
+    <form method="post" class="row g-3 was-validated d-flex justify-content-center" oninput='rePassword.setCustomValidity(rePassword.value != Password.value ? "Mật khẩu 2 trường không giống nhau!!." : "")' action="save">
         <div class="col-sm-4 border p-3 ">
             <h4>Form đăng kí người dùng</h4>
             <div class="col-md-12">

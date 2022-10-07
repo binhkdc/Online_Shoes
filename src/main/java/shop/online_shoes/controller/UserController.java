@@ -5,10 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import shop.online_shoes.dto.UserDto;
 import shop.online_shoes.service.UserService;
@@ -39,7 +36,7 @@ public class UserController {
         return "user/create";
     }
     @PostMapping(value = "save", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String saveUser ( UserDto userDto, RedirectAttributes model){
+    public String saveUser (UserDto userDto, RedirectAttributes model){
         try {
             userService.save(userDto);
             model.addFlashAttribute("message", "Tạo mới tài khoản thành công");
