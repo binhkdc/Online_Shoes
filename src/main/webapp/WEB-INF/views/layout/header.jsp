@@ -3,6 +3,7 @@
 <head>
     <title>Online_Shoes</title>
     <link href="/bootstrap5/css/bootstrap.css" rel="stylesheet">
+    <link href="/bootstrap5/css/style.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
