@@ -11,36 +11,33 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "user", schema = "online_shoes", catalog = "")
+@Table(name = "user", schema = "Shop_Shoes", catalog = "")
 @Data
 public class UserEntity implements UserDetails {
+
     @Id
-    @Column(name = "UserId")
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userid;
+    private Long id;
     @Basic
-    @Column(name = "Email")
+    @Column(name = "EMAIL")
     private String email;
     @Basic
-    @Column(name = "Password")
+    @Column(name = "PASSWORD")
     private String password;
     @Basic
-    @Column(name = "Full_Name")
+    @Column(name = "FULL_NAME")
     private String fullName;
-//    @Basic
-//    @Column(name = "Address")
-//    private String address;
     @Basic
-    @Column(name = "Address")
+    @Column(name = "ADDRESS")
+    private String address;
+    @Basic
+    @Column(name = "ROLE")
     private String role;
 
     @Basic
     @Column(name = "STATUS")
     private Integer status;
-    @Basic
-    @Column(name = "AVATAR")
-    private String avatar;
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> authorities = new HashSet<>();

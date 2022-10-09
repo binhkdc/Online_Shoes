@@ -19,7 +19,7 @@ public class AuthenticationSuccessHandlerCustom implements AuthenticationSuccess
                                         Authentication authentication) throws IOException, ServletException {
         SecurityContextHolder.getContext().getAuthentication();
         UserEntity userEntity = ((UserEntity)authentication.getPrincipal());
-        if ("1".equalsIgnoreCase(userEntity.getRole())) {
+        if ("ADMIN".equalsIgnoreCase(userEntity.getRole())) {
             response.sendRedirect("/backend/user/list");
         } else {
             response.sendRedirect("/backend/user/create");

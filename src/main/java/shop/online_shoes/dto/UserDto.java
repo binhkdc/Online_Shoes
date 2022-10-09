@@ -10,12 +10,13 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @NoArgsConstructor
 public class UserDto {
-    Long userId;
-    String full_Name;
+    Long id;
+    String fullName;
     String address;
     String email;
     String password;
     String rePassword;
-    Long role;
+    String role;
+    Long Status;
     MultipartFile fileImage;
 }

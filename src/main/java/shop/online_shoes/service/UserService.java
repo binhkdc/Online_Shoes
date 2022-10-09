@@ -1,7 +1,12 @@
 package shop.online_shoes.service;
 
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import shop.online_shoes.dto.UserDto;
+import shop.online_shoes.entities.UserEntity;
+import shop.online_shoes.repository.user.UserRepository;
 import shop.online_shoes.utils.DbUtils;
 
 import java.sql.Connection;
@@ -14,6 +19,13 @@ import java.util.List;
 @Service
 public class UserService {
 
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     public List<HashMap<String, String>> list () throws Exception {
         List<HashMap<String, String>> UserDtoList = new ArrayList<>();
         Connection conn = DbUtils.getCollection();
@@ -23,12 +35,12 @@ public class UserService {
             ResultSet resultSet = sqlFile.executeQuery(selectSql);
             while (resultSet.next()) {
                 HashMap<String,String> row = new HashMap<>();
-                row.put("UserId", resultSet.getString("UserId")) ;
-                row.put("Full_Name",       resultSet.getString("Full_Name")) ;
-                row.put("Address",   resultSet.getString("Address")) ;
-                row.put("Email", resultSet.getString("Email")) ;
-                row.put("Role",       resultSet.getString("Role")) ;
-
+                row.put("ID", resultSet.getString("ID")) ;
+                row.put("FULL_NAME",       resultSet.getString("FULL_NAME")) ;
+                row.put("ADDRESS",   resultSet.getString("ADDRESS")) ;
+                row.put("EMAIL", resultSet.getString("EMAIL")) ;
+                row.put("ROLE",       resultSet.getString("ROLE")) ;
+                row.put("STATUS",       resultSet.getString("STATUS")) ;
                 UserDtoList.add(row);
             }
             resultSet.close();
@@ -39,18 +51,15 @@ public class UserService {
         return UserDtoList;
     }
 
-    public void save(UserDto userDto) throws Exception{
-        Connection con = DbUtils.getCollection();
-        Statement sqlFile = con.createStatement();
-        try {
-            // Bước 3: Tạo câu truy vấn
-            String selectSql = "INSERT INTO `user`( `Full_Name`, `Address`, `Email`, `Password`, `Role`) VALUES ('"+userDto.getFull_Name()+"','"+userDto.getAddress()+"','"+userDto.getEmail()+"',PASSWORD('"+userDto.getPassword()+"'),0 )";
-            // Bước 4; Run kết quả
-            sqlFile.execute(selectSql);
-        } finally {
-            // Bước 5: Đóng kết nối
-            sqlFile.close();
-            con.close();
-        }
+    public void save(UserDto userDto) throws Exception {
+        UserEntity userEntity = new UserEntity();
+        BeanUtils.copyProperties(userDto, userEntity);
+        userEntity.setPassword(passwordEncoder.encode(userDto.getPassword()));
+//        userDAO.save(userDto);
+
+        userRepository.save(userEntity);
     }
+
+
+
 }

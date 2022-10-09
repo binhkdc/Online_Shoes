@@ -34,10 +34,10 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // Chặn các request bắt đầu /backend/ bắt buộc đăng nhập
         http.authorizeRequests()
-                .antMatchers("/backend/user/list").hasRole("1")
-//                .antMatchers("/backend/user/list").hasAnyRole("1", "0")
-//                .antMatchers("/backend/**").hasRole("1")
-//                .antMatchers("/anonymous*").anonymous()
+//                .antMatchers("/backend/user/list").hasRole("ADMIN")
+//                .antMatchers("/backend/user/list").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/backend/**").hasRole("ADMIN")
+                .antMatchers("/anonymous*").anonymous()
                 .antMatchers("/backend/**").authenticated()
 
                 .anyRequest().permitAll  ();
@@ -45,12 +45,13 @@ public class SecurityConfiguration {
         http.csrf().disable();
         http.formLogin()
                 .loginPage("/login")// redirect sang trang login nếu như nó bị chặn
+                .loginProcessingUrl("/doLogin")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .loginProcessingUrl("/doLogin")
                 .failureHandler(authenticationFailureHandlerCustom)
                 .successHandler(authenticationSuccessHandlerCustom)
-                .defaultSuccessUrl("/user/list", true)
+
+                .defaultSuccessUrl("/backend/user/list", true)
                 .failureUrl("/login?error=true")
         ;
         http.logout().logoutUrl("/logout");

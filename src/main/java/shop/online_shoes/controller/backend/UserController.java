@@ -1,7 +1,10 @@
-package shop.online_shoes.controller;
+package shop.online_shoes.controller.backend;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,10 +19,12 @@ import java.util.Objects;
 
 
 @Service
-@RequestMapping("user")
+@RequestMapping("/backend/user")
+@Controller
 public class UserController {
     @Autowired
     UserService userService;
+
 
     @GetMapping("list")
     public String list(Model model) {
@@ -28,24 +33,31 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "user/list";
+        return "/backend/user/list";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("create")
-    public String createUser(Model model){
-        return "user/create";
+    public String createUser(Model model) {
+        return "/backend/user/create";
     }
+
+
     @PostMapping(value = "save", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String saveUser (UserDto userDto, RedirectAttributes model){
+    public String save(@Valid @ModelAttribute("userDto") UserDto userDto,
+                       BindingResult bindingResult, RedirectAttributes model, Model m) {
+        if (bindingResult.hasErrors()) {
+            return "/backend/user/create";
+        }
         try {
             userService.save(userDto);
             model.addFlashAttribute("message", "Tạo mới tài khoản thành công");
         } catch (Exception e) {
             model.addFlashAttribute("message", "Tạo mới tài khoản không thành công");
         }
-
-        return "redirect:/user/create";
+        return "redirect:/backend/user/create";
     }
 
-
 }
+
+
