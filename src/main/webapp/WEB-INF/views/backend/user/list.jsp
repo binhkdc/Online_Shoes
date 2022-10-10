@@ -6,7 +6,7 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th class="cell">UserId</th>
+            <th class="cell">Id</th>
             <th class="cell">Full_Name</th>
             <th class="cell">Address</th>
             <th class="cell">Email</th>

@@ -2,8 +2,10 @@
 <html>
 <head>
     <title>Online_Shoes</title>
+    <%@page pageEncoding="UTF-8" %>
     <link href="/bootstrap5/css/bootstrap.css" rel="stylesheet">
     <link href="/bootstrap5/css/style.css" rel="stylesheet">
+    <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,12 +33,20 @@
 <%--                        <li><a class="dropdown-item" href="#">Something else here</a></li>--%>
 <%--                    </ul>--%>
 <%--                </li>--%>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout" tabindex="-1" aria-disabled="true">logout</a>
-                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <sec:authorize access="!isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <span class="navbar-text">Xin Chao:<sec:authentication property="principal.fullName"></sec:authentication></span>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="/logout" tabindex="-1" aria-disabled="true">logout</a>
+                    </li>
+                </sec:authorize>
+
             </ul>
         </div>
     </div>

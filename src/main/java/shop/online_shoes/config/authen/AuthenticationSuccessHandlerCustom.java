@@ -22,7 +22,7 @@ public class AuthenticationSuccessHandlerCustom implements AuthenticationSuccess
         if ("ADMIN".equalsIgnoreCase(userEntity.getRole())) {
             response.sendRedirect("/backend/user/list");
         } else {
-            response.sendRedirect("/backend/user/create");
+            response.sendRedirect("/backend/user/list");
         }
     }
 }
