@@ -20,7 +20,13 @@
                     <a class="nav-link active" aria-current="page" href="/backend/user/list">User</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="/backend/product/list">Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/backend/producer/list">Producer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/backend/category/list">Category</a>
                 </li>
 <%--                <li class="nav-item dropdown">--%>
 <%--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">--%>
