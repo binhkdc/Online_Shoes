@@ -91,12 +91,6 @@
     </section>
 
 
-    <footer>
-        <p>
-            Form made by: <a href="http://mohmdhasan.tk" target="_blank">Mohmdhasan.tk</a>
-        </p>
-    </footer>
-
 </div>
 
 <script src="/bootstrap5/js/style.js" ></script>
