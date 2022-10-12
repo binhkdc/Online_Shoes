@@ -13,7 +13,7 @@
                 <div class="invalid-feedback">Vui lòng nhập vào trường tennsx</div>
             </div>
             <div class="col-md-12">
-                <label for="Address" class="form-label">Địa Chỉ</label>
+                <label for="diachi" class="form-label">Địa Chỉ</label>
                 <input type="text" placeholder="diachi" class="form-control" id="diachi" name="diachi" required>
                 <div class="valid-feedback">Vô cùng chính xác.</div>
                 <div class="invalid-feedback">Vui lòng nhập vào trường diachi</div>

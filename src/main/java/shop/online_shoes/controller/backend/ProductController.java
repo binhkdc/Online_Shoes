@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import shop.online_shoes.dto.ProductDto;
 import shop.online_shoes.dto.UserDto;
+import shop.online_shoes.service.CategoryService;
+import shop.online_shoes.service.ProducerService;
 import shop.online_shoes.service.ProductService;
 
 import javax.validation.Valid;
@@ -24,6 +27,12 @@ public class ProductController {
 
     @Autowired
     ProductService productService;
+
+    @Autowired
+    CategoryService categoryService;
+
+    @Autowired
+    ProducerService producerService;
 
     @GetMapping("list")
     public String list(Model model) {
@@ -38,22 +47,29 @@ public class ProductController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("create")
     public String createProduct(Model model) {
+        try {
+            model.addAttribute("producer", producerService.list());
+            model.addAttribute("category", categoryService.list());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return "/backend/product/create";
     }
 
 
-//    @PostMapping(value = "save", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-//    public String save(@Valid @ModelAttribute("userDto") UserDto userDto,
-//                       BindingResult bindingResult, RedirectAttributes model, Model m) {
-//        if (bindingResult.hasErrors()) {
-//            return "/backend/user/create";
-//        }
-//        try {
-//            productService.save(userDto);
-//            model.addFlashAttribute("message", "Tạo mới tài khoản thành công");
-//        } catch (Exception e) {
-//            model.addFlashAttribute("message", "Tạo mới tài khoản không thành công");
-//        }
-//        return "redirect:/backend/user/create";
-//    }
+    @PostMapping(value = "save", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String save(@Valid @ModelAttribute("userDto") ProductDto productDto,
+                       BindingResult bindingResult, RedirectAttributes model, Model m) {
+        if (bindingResult.hasErrors()) {
+            return "/backend/product/create";
+        }
+        try {
+            productService.save(productDto);
+            model.addFlashAttribute("message", "Tạo mới sản phẩm thành công");
+        } catch (Exception e) {
+            model.addFlashAttribute("message", "Tạo mới sản phẩm không thành công");
+        }
+        return "redirect:/backend/product/create";
+    }
 }

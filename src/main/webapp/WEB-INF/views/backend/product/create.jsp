@@ -5,37 +5,61 @@
     <span style="color: red">${message}</span>
     <form method="post" class="row g-3 was-validated d-flex justify-content-center" oninput='rePassword.setCustomValidity(rePassword.value != Password.value ? "Mật khẩu 2 trường không giống nhau!!." : "")' action="save">
         <div class="col-sm-4 border p-3 ">
-            <h4>Form đăng kí người dùng</h4>
+            <h4>Tạo sản phẩm</h4>
             <div class="col-md-12">
-                <label for="full_name" class="form-label">full_name</label>
-                <input type="text" placeholder="full_name" class="form-control" id="full_name" name="fullName" required>
+                <label for="tengiay" class="form-label">Tên Giày</label>
+                <input type="text" placeholder="tengiay" class="form-control" id="tengiay" name="tengiay" required>
                 <div class="valid-feedback">Vô cùng chính xác.</div>
-                <div class="invalid-feedback">Vui lòng nhập vào trường Full_Name</div>
+                <div class="invalid-feedback">Vui lòng nhập vào trường Tên Giày</div>
+            </div>
+            <select class="form-select" aria-label="Default select example" name="mansx" required>
+                <option>chọn để mở menu mã nhà sản xuất</option>
+                <c:forEach var="list" items="${producer}">
+                    <option value="${list.mansx}">${list.tennsx}</option>
+                </c:forEach>
+            </select>
+            <div class="col-md-12">
+                <label for="soluong" class="form-label">Số lượng</label>
+                <input type="text" placeholder="soluong" class="form-control" id="soluong" name="soluong" required>
+                <div class="valid-feedback">Vô cùng chính xác.</div>
+                <div class="invalid-feedback">Vui lòng nhập vào trường Số lượng</div>
             </div>
             <div class="col-md-12">
-                <label for="Address" class="form-label">Address</label>
-                <input type="text" placeholder="address" class="form-control" id="Address" name="address" required>
+                <label for="size" class="form-label">Kích cỡ</label>
+                <input type="text" placeholder="size" class="form-control" id="size" name="size" required>
                 <div class="valid-feedback">Vô cùng chính xác.</div>
-                <div class="invalid-feedback">Vui lòng nhập vào trường Address</div>
+                <div class="invalid-feedback">Vui lòng nhập vào trường Kích cỡ</div>
             </div>
             <div class="col-md-12">
-                <label for="Email" class="form-label">Email</label>
-                <input type="email" placeholder="email" class="form-control" id="Email" name="email" required>
+                <label for="mausac" class="form-label">Màu sắc</label>
+                <input type="text" placeholder="mausac" class="form-control" id="mausac" name="mausac" required>
                 <div class="valid-feedback">Vô cùng chính xác.</div>
-                <div class="invalid-feedback">Vui lòng nhập vào trường Email</div>
+                <div class="invalid-feedback">Vui lòng nhập vào trường Màu sắc</div>
             </div>
             <div class="col-md-12">
-                <label for="Password" class="form-label">Password</label>
-                <input type="Password" placeholder="password" class="form-control" id="Password" name="password" required>
+                <label for="gia" class="form-label">Giá</label>
+                <input type="number" placeholder="gia" class="form-control" id="gia" name="gia" required>
                 <div class="valid-feedback">Vô cùng chính xác.</div>
-                <div class="invalid-feedback">Vui lòng nhập vào trường Password</div>
+                <div class="invalid-feedback">Vui lòng nhập vào trường Giá</div>
             </div>
             <div class="col-md-12">
-                <label for="rePassword" class="form-label">rePassword</label>
-                <input type="Password" placeholder="rePassword" class="form-control" id="rePassword" name="rePassword" required>
+                <label for="hinhanh" class="form-label">Hình ảnh</label>
+                <input type="text" placeholder="hinhanh" class="form-control" id="hinhanh" name="hinhanh" required>
                 <div class="valid-feedback">Vô cùng chính xác.</div>
-                <div class="invalid-feedback">Vui lòng nhập vào trường rePassword</div>
+                <div class="invalid-feedback">Vui lòng nhập vào trường Hình ảnh</div>
             </div>
+            <div class="col-md-12">
+                <label for="mota" class="form-label">Mô tả</label>
+                <input type="text" placeholder="mota" class="form-control" id="mota" name="mota" required>
+                <div class="valid-feedback">Vô cùng chính xác.</div>
+                <div class="invalid-feedback">Vui lòng nhập vào trường Mô tả</div>
+            </div>
+            <select class="form-select" aria-label="Default select example" name="maloaigiay" required>
+                <option>chọn để mở menu mã nhà sản xuất</option>
+                <c:forEach var="list" items="${category}">
+                    <option value="${list.maloaigiay}">${list.loaigiay}</option>
+                </c:forEach>
+            </select>
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>

@@ -2,6 +2,8 @@ package shop.online_shoes.service;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import shop.online_shoes.dto.ProducerDto;
+import shop.online_shoes.dto.ProductDto;
 import shop.online_shoes.dto.UserDto;
 import shop.online_shoes.entities.UserEntity;
 import shop.online_shoes.utils.DbUtils;
@@ -45,12 +47,19 @@ public class ProductService {
         return UserDtoList;
     }
 
-//    public void save(UserDto userDto) throws Exception {
-//        UserEntity userEntity = new UserEntity();
-//        BeanUtils.copyProperties(userDto, userEntity);
-//        userEntity.setPassword(passwordEncoder.encode(userDto.getPassword()));
-////        userDAO.save(userDto);
-//
-//        userRepository.save(userEntity);
-//    }
+    public void save(ProductDto productDto) throws Exception {
+        Connection con = DbUtils.getCollection();
+        Statement sqlFile = con.createStatement();
+        try {
+            // Bước 3: Tạo câu truy vấn
+            String selectSql = "INSERT INTO `sanpham`(`TenGiay`, `MaNSX`, `SoLuong`, `Size`, `MauSac`, `Gia`, `HinhAnh`, `MoTa`, `MaLoaiGiay`)" +
+                    " VALUES ('"+productDto.getTengiay()+"','"+productDto.getMansx()+"','"+productDto.getSoluong()+"','"+productDto.getSize()+"','"+productDto.getMausac()+"','"+productDto.getGia()+"','"+productDto.getHinhanh()+"','"+productDto.getMota()+"','"+productDto.getMaloaigiay()+"')";
+            // Bước 4; Run kết quả
+            sqlFile.execute(selectSql);
+        } finally {
+            // Bước 5: Đóng kết nối
+            sqlFile.close();
+            con.close();
+        }
+    }
 }
