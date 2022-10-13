@@ -1,8 +1,9 @@
 <%@page pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@include file="/WEB-INF/views/layout/header.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@include file="/WEB-INF/views/layout/header.jsp" %>
 
 <div class="container">
+    <span style="color: red">${message}</span>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -20,28 +21,28 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="user" items="${list}">
+        <c:forEach var="product" items="${list}">
             <tr>
-                <td>${user.magiay}</td>
-                <td>${user.tengiay}</td>
-                <td>${user.mansx}</td>
-                <td>${user.soluong}</td>
-                <td>${user.size}</td>
-                <td>${user.mausac}</td>
-                <td>${user.gia}</td>
-                <td>${user.hinhanh}</td>
-                <td>${user.mota}</td>
-                <td>${user.maloaigiay}</td>
+                <td>${product.magiay}</td>
+                <td>${product.tengiay}</td>
+                <td>${product.mansx}</td>
+                <td>${product.soluong}</td>
+                <td>${product.size}</td>
+                <td>${product.mausac}</td>
+                <td>${product.gia}</td>
+                <td>${product.hinhanh}</td>
+                <td>${product.mota}</td>
+                <td>${product.maloaigiay}</td>
                 <td class="cell"><a class="btn-sm app-btn-secondary"
-                                    href="/backend/product/edit/${user.ID}">Edit</a> <a
+                                    href="/backend/product/edit/${product.magiay}">Edit</a> <a
                         class="btn-sm app-btn-secondary"
-                        href="/backend/product/delete/${user.ID}">Delete</a> <a
+                        href="/backend/product/delete/${product.magiay}">Delete</a> <a
                         class="btn-sm app-btn-secondary"
-                        href="/backend/product/details/${user.ID}">View</a></td>
+                        href="/backend/product/details/${product.magiay}">View</a></td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
 </div>
 
-<%@include file="/WEB-INF/views/layout/footer.jsp"%>
+<%@include file="/WEB-INF/views/layout/footer.jsp" %>

@@ -7,10 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import shop.online_shoes.dto.ProductDto;
 import shop.online_shoes.dto.UserDto;
@@ -71,5 +68,71 @@ public class ProductController {
             model.addFlashAttribute("message", "Tạo mới sản phẩm không thành công");
         }
         return "redirect:/backend/product/create";
+    }
+
+    @GetMapping(value = {"/details/{id}"})
+    public String details(@PathVariable String id, Model model) {
+        try {
+            model.addAttribute("producer", producerService.list());
+            model.addAttribute("product", productService.details(id));
+            model.addAttribute("category", categoryService.list());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "/backend/product/details";
+    }
+
+    @GetMapping(value = {"/edit/{id}"})
+    public String edit(@PathVariable String id, Model model) {
+        try {
+            model.addAttribute("producer", producerService.list());
+            model.addAttribute("product", productService.details(id));
+            model.addAttribute("category", categoryService.list());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "/backend/product/edit";
+    }
+
+    @PostMapping(value = "update", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String update(ProductDto productDto,
+                       BindingResult bindingResult, RedirectAttributes model, Model m) {
+        if (bindingResult.hasErrors()) {
+            return "/backend/product/details";
+        }
+        try {
+            productService.update(productDto);
+            model.addFlashAttribute("message", "Sửa sản phẩm thành công");
+        } catch (Exception e) {
+            model.addFlashAttribute("message", "Sửa sản phẩm không thành công");
+        }
+        return "redirect:/backend/product/list";
+    }
+
+    @GetMapping(value = {"/delete/{id}"})
+    public String delete(@PathVariable String id, Model model) {
+        try {
+            model.addAttribute("producer", producerService.list());
+            model.addAttribute("product", productService.details(id));
+            model.addAttribute("category", categoryService.list());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "/backend/product/delete";
+    }
+
+    @PostMapping(value = "deleteProduct", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String deleteProduct(ProductDto productDto,
+                         BindingResult bindingResult, RedirectAttributes model, Model m) {
+        if (bindingResult.hasErrors()) {
+            return "/backend/product/delete";
+        }
+        try {
+            productService.delete(productDto);
+            model.addFlashAttribute("message", "Xóa sản phẩm thành công");
+        } catch (Exception e) {
+            model.addFlashAttribute("message", "Xóa sản phẩm không thành công");
+        }
+        return "redirect:/backend/product/list";
     }
 }
