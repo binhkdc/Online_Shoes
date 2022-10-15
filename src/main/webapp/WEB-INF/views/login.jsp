@@ -1,69 +1,174 @@
 <%@page pageEncoding="UTF-8" %>
 <%@include file="/WEB-INF/views/layout/header.jsp"%>
-
-<div class="container-fluid h-custom">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-md-9 col-lg-6 col-xl-5">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-                 class="img-fluid" alt="Sample image">
-        </div>
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-            <form action="doLogin" method="post">
-                <p style="color: red" class="lead fw-normal mb-0 me-3">${message}</p> <br>
-                <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-
-                    <p class="lead fw-normal mb-0 me-3">Sign in with</p>
-                    <button type="button" class="btn btn-primary btn-floating mx-1">
-                        <i class="fab fa-facebook-f"></i>
-                    </button>
-
-                    <button type="button" class="btn btn-primary btn-floating mx-1">
-                        <i class="fab fa-twitter"></i>
-                    </button>
-
-                    <button type="button" class="btn btn-primary btn-floating mx-1">
-                        <i class="fab fa-linkedin-in"></i>
-                    </button>
-                </div>
-
-                <div class="divider d-flex align-items-center my-4">
-                    <p class="text-center fw-bold mx-3 mb-0">Or</p>
-                </div>
-
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                    <input type="email" name="email" id="form3Example3" class="form-control form-control-lg"
-                           placeholder="Enter a valid email address" />
-                    <label class="form-label" for="form3Example3">Email </label>
-                </div>
-
-                <!-- Password input -->
-                <div class="form-outline mb-3">
-                    <input type="password" name="password" id="form3Example4" class="form-control form-control-lg"
-                           placeholder="Enter password" />
-                    <label class="form-label" for="form3Example4">Mật khảu</label>
-                </div>
-
-                <div class="d-flex justify-content-between align-items-center">
-                    <!-- Checkbox -->
-                    <div class="form-check mb-0">
-                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                        <label class="form-check-label" for="form2Example3">
-                            Remember me
-                        </label>
+<section class="signin-section">
+    <div class="container-fluid">
+        <!-- ========== title-wrapper start ========== -->
+        <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="title mb-30">
+                        <h2>Sign in</h2>
                     </div>
-                    <a href="#!" class="text-body">Forgot password?</a>
                 </div>
-
-                <div class="text-center text-lg-start mt-4 pt-2">
-                    <button type="submit" class="btn btn-primary btn-lg"
-                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Đăng nhập</button>
-                    <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
-                                                                                      class="link-danger">Register</a></p>
+                <!-- end col -->
+                <div class="col-md-6">
+                    <div class="breadcrumb-wrapper mb-30">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="#0">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="#0">Auth</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Sign in
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
                 </div>
-
-            </form>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
         </div>
+        <!-- ========== title-wrapper end ========== -->
+
+        <div class="row g-0 auth-row">
+            <div class="col-lg-6">
+                <div class="auth-cover-wrapper bg-primary-100">
+                    <div class="auth-cover">
+                        <div class="title text-center">
+                            <h1 class="text-primary mb-10">Welcome Back</h1>
+                            <p class="text-medium">
+                                Sign in to your Existing account to continue
+                            </p>
+                        </div>
+                        <div class="cover-image">
+                            <img src="assets/images/auth/signin-image.svg" alt="" />
+                        </div>
+                        <div class="shape-image">
+                            <img src="assets/images/auth/shape.svg" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+            <div class="col-lg-6">
+                <div class="signin-wrapper">
+                    <div class="form-wrapper">
+                        <h6 class="mb-15">Sign In Form</h6>
+                        <p class="text-sm mb-25">
+                            Start creating the best possible user experience for you
+                            customers.
+                        </p>
+                        <form action="doLogin" method="post">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Email</label>
+                                        <input type="email" name="email" id="form3Example3"
+                                               placeholder="Enter a valid email address" />
+
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        <label>Password</label>
+                                        <input type="password" name="password" id="form3Example4" class="form-control form-control-lg"
+                                               placeholder="Enter password" />
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                                <div class="col-xxl-6 col-lg-12 col-md-6">
+                                    <div class="form-check checkbox-style mb-30">
+                                        <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                value=""
+                                                id="checkbox-remember"
+                                        />
+                                        <label
+                                                class="form-check-label"
+                                                for="checkbox-remember"
+                                        >
+                                            Remember me next time</label
+                                        >
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                                <div class="col-xxl-6 col-lg-12 col-md-6">
+                                    <div
+                                            class="
+                            text-start text-md-end text-lg-start text-xxl-end
+                            mb-30
+                          "
+                                    >
+                                        <a href="#0" class="hover-underline"
+                                        >Forgot Password?</a
+                                        >
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                                <div class="col-12">
+                                    <div
+                                            class="
+                            button-group
+                            d-flex
+                            justify-content-center
+                            flex-wrap
+                          "
+                                    >
+                                        <button
+                                                class="
+                              main-btn
+                              primary-btn
+                              btn-hover
+                              w-100
+                              text-center
+                            "
+                                        >
+                                            Sign In
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+                        </form>
+                        <div class="singin-option pt-40">
+                            <p class="text-sm text-medium text-center text-gray">
+                                Easy Sign In With
+                            </p>
+                            <div
+                                    class="
+                        button-group
+                        pt-40
+                        pb-40
+                        d-flex
+                        justify-content-center
+                        flex-wrap
+                      "
+                            >
+                                <button class="main-btn primary-btn-outline m-2">
+                                    <i class="lni lni-facebook-filled mr-10"></i>
+                                    Facebook
+                                </button>
+                                <button class="main-btn danger-btn-outline m-2">
+                                    <i class="lni lni-google mr-10"></i>
+                                    Google
+                                </button>
+                            </div>
+                            <p class="text-sm text-medium text-dark text-center">
+                                Don’t have any account yet?
+                                <a href="signup.html">Create an account</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
     </div>
-</div>
+</section>
+
 <%@include file="/WEB-INF/views/layout/footer.jsp"%>

@@ -12,8 +12,6 @@
                 <div class="valid-feedback">Vô cùng chính xác.</div>
                 <div class="invalid-feedback">Vui lòng nhập vào trường loaigiay</div>
             </div>
-
-
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>

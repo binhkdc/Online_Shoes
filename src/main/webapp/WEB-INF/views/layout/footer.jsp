@@ -1,50 +1,53 @@
-<footer class="bg-dark text-center text-white">
-    <!-- Grid container -->
-    <div class="container p-4 pb-0">
-        <!-- Section: Social media -->
-        <section class="mb-4">
-            <!-- Facebook -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-facebook-f"></i
-            ></a>
 
-            <!-- Twitter -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-twitter"></i
-            ></a>
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 order-last order-md-first">
+                    <div class="copyright text-center text-md-start">
+                        <p class="text-sm">
+                            Designed and Developed by
+                            <a
+                                    href="https://plainadmin.com"
+                                    rel="nofollow"
+                                    target="_blank"
+                            >
+                                PlainAdmin
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <!-- end col-->
+                <div class="col-md-6">
+                    <div
+                            class="
+                  terms
+                  d-flex
+                  justify-content-center justify-content-md-end
+                "
+                    >
+                        <a href="#0" class="text-sm">Term & Conditions</a>
+                        <a href="#0" class="text-sm ml-15">Privacy & Policy</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </footer>
+    <!-- ========== footer end =========== -->
+</main>
+<!-- ======== main-wrapper end =========== -->
 
-            <!-- Google -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-google"></i
-            ></a>
-
-            <!-- Instagram -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-instagram"></i
-            ></a>
-
-            <!-- Linkedin -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-linkedin-in"></i
-            ></a>
-
-            <!-- Github -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-github"></i
-            ></a>
-        </section>
-        <!-- Section: Social media -->
-    </div>
-    <!-- Grid container -->
-
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2020 Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-</footer>
-<script src="/bootstrap5/js/bootstrap.js" ></script>
+<!-- ========= All Javascript files linkup ======== -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/Chart.min.js"></script>
+<script src="/assets/js/dynamic-pie-chart.js"></script>
+<script src="/assets/js/moment.min.js"></script>
+<script src="/assets/js/fullcalendar.js"></script>
+<script src="/assets/js/jvectormap.min.js"></script>
+<script src="/assets/js/world-merc.js"></script>
+<script src="/assets/js/polyfill.js"></script>
+<script src="/assets/js/main.js"></script>
 </body>
-
 </html>
+<%--<script src="/bootstrap5/js/bootstrap.js" ></script>--%>
