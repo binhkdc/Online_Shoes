@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import shop.online_shoes.dto.ProductDto;
 import shop.online_shoes.dto.UserDto;
 import shop.online_shoes.service.UserService;
 
@@ -56,6 +57,33 @@ public class UserController {
             model.addFlashAttribute("message", "Tạo mới tài khoản không thành công");
         }
         return "redirect:/backend/user/create";
+    }
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @GetMapping(value = {"/edit/{id}"})
+    public String edit(@PathVariable String id, Model model) {
+        try {
+
+            model.addAttribute("user", userService.details(id));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "/backend/user/edit";
+    }
+
+    @PostMapping(value = "update", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String update(UserDto userDto,
+                         BindingResult bindingResult, RedirectAttributes model, Model m) {
+        if (bindingResult.hasErrors()) {
+            return "/backend/user/details";
+        }
+        try {
+            userService.update(userDto);
+            model.addFlashAttribute("message", "Sửa người dùng thành công");
+        } catch (Exception e) {
+            model.addFlashAttribute("message", "Sửa người dùng không thành công");
+        }
+        return "redirect:/backend/user/list";
     }
 
 }
