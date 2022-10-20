@@ -32,9 +32,8 @@
             <!-- end row -->
         </div>
         <!-- ========== title-wrapper end ========== -->
-
-        <!-- ========== tables-wrapper start ========== -->
         <div class="tables-wrapper">
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
@@ -64,13 +63,26 @@
                                         <td class="min-width"><p>${user.ADDRESS}</p></td>
                                         <td class="min-width"><p>${user.EMAIL}</p></td>
                                         <td class="min-width"><p>${user.ROLE}</p></td>
-                                        <td class="min-width"><p>${user.STATUS}</p></td>
-                                        <td class="min-width"><a class="btn-sm app-btn-secondary"
-                                                            href="/user/edit/${user.ID}">Edit</a> <a
-                                                class="btn-sm app-btn-secondary"
-                                                href="/user/delete/${user.ID}">Delete</a> <a
-                                                class="btn-sm app-btn-secondary"
-                                                href="/user/details/${user.ID}">View</a></td>
+                                        <c:set var="status" value="${user.STATUS}"/>
+                                        <c:choose>
+                                            <c:when test="${status == 1}">
+                                                <td class="min-width">
+                                                    <span class="status-btn active-btn">Active</span>
+                                                </td>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <td>
+                                                    <span class="status-btn close-btn">Close</span>
+                                                </td>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <td>
+                                            <div class="action">
+                                                <a class="text-danger" href="/backend/user/edit/${user.ID}">
+                                                    <i class="lni lni-trash-can"></i>
+                                                </a>
+                                            </div>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -83,9 +95,8 @@
                 <!-- end col -->
             </div>
             <!-- end row -->
-
         </div>
-        <!-- ========== tables-wrapper end ========== -->
+
     </div>
     <!-- end container -->
 </section>

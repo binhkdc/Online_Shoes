@@ -60,7 +60,7 @@
                 <a href="#" class="nav__link " id="nav-signup">Sign Up</a>
             </div>
             <div class="nav__login" >
-                <a href="#" class="nav__link " id="nav-login">Login</a>
+                <a href="/login1" class="nav__link " id="nav-login">Login</a>
             </div>
             <div class="nav__toggle" id="nav-toggle">
                 <i class='bx bx-grid-alt' ></i>
