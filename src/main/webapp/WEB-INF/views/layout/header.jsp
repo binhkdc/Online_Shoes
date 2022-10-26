@@ -54,19 +54,19 @@
                 </a>
                 <ul id="ddmenu_4" class="collapse dropdown-nav">
                     <li>
-                        <a href="/backend/category/list"> Phân Loại </a>
+                        <a href="/backend/category/list"> Category</a>
                     </li>
                     <li>
-                        <a href="/backend/producer/list"> Nhà Sản Xuất </a>
+                        <a href="/backend/producer/list"> Producer </a>
                     </li>
                     <li>
-                        <a href="/backend/product/list">Sản Phẩm </a>
+                        <a href="/backend/product/list"> Product </a>
                     </li>
                     <li>
-                        <a href="/backend/supplier/list"> Nhà Cung Cấp </a>
+                        <a href="/backend/supplier/list"> Supplier </a>
                     </li>
                     <li>
-                        <a href="/backend/user/list"> Người Dùng </a>
+                        <a href="/backend/user/list"> User </a>
                     </li>
                 </ul>
             </li>
