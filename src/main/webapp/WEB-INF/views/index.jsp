@@ -1,4 +1,5 @@
 <%@include file="/WEB-INF/views/layout/header.jsp"%>
+<%@page pageEncoding="UTF-8" %>
 <section class="table-components">
     <div class="container-fluid">
         <!-- ========== title-wrapper start ========== -->

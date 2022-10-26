@@ -56,9 +56,8 @@
                 <div class="signin-wrapper">
                     <div class="form-wrapper">
                         <h6 class="mb-15">Sign In Form</h6>
-                        <p class="text-sm mb-25">
-                            Start creating the best possible user experience for you
-                            customers.
+                        <p class="text-sm mb-25 text-danger">
+                            ${message}
                         </p>
                         <form action="doLogin" method="post">
                             <div class="row">

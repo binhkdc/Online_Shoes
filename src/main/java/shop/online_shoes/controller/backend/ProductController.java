@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import shop.online_shoes.dto.ProductDto;
 import shop.online_shoes.dto.UserDto;
@@ -15,7 +16,9 @@ import shop.online_shoes.service.CategoryService;
 import shop.online_shoes.service.ProducerService;
 import shop.online_shoes.service.ProductService;
 
+
 import javax.validation.Valid;
+import java.io.IOException;
 
 @Service
 @RequestMapping("/backend/product")
@@ -61,6 +64,7 @@ public class ProductController {
         if (bindingResult.hasErrors()) {
             return "/backend/product/create";
         }
+
         try {
             productService.save(productDto);
             model.addFlashAttribute("message", "Tạo mới sản phẩm thành công");
@@ -135,4 +139,5 @@ public class ProductController {
         }
         return "redirect:/backend/product/list";
     }
+
 }

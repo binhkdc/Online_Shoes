@@ -18,11 +18,11 @@
                  class="img-fluid">
         </div>
         <div class=" col-md-6 mt-5">
-            <p class="fs-3"> <span class="text-danger">Opps!</span> Page not found.</p>
+            <p class="fs-3"> <span class="text-danger">Opps!</span> Trang bị lỗi.</p>
             <p class="lead">
-                Bạn đéo có quyền để vào đây!
+                Bạn không có quyền để vào đây!
             </p>
-            <a href="/" class="btn btn-primary">Go Home</a>
+            <a href="/" onclick="Redirect();"  class="btn btn-primary">Quay lại</a>
         </div>
 
     </div>

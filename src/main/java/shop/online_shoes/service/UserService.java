@@ -2,12 +2,16 @@ package shop.online_shoes.service;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import shop.online_shoes.dto.ChangePasswordDto;
 import shop.online_shoes.dto.ProductDto;
+import shop.online_shoes.dto.ResponseDto;
 import shop.online_shoes.dto.UserDto;
 import shop.online_shoes.entities.UserEntity;
 import shop.online_shoes.repository.user.UserRepository;
+import shop.online_shoes.utils.Constant;
 import shop.online_shoes.utils.DbUtils;
 
 import java.sql.Connection;
@@ -102,6 +106,18 @@ public class UserService {
             sqlFile.close();
             con.close();
         }
+    }
+
+    public ResponseDto changePassword(ChangePasswordDto userDto) {
+        // chuyển từ dto sang entity
+        UserEntity userEntity = userRepository.findById(((UserEntity) SecurityContextHolder
+                .getContext().getAuthentication().getPrincipal()).getId()).get();
+        if (!passwordEncoder.matches(userDto.getOldPassword(), userEntity.getPassword())) {
+            return new ResponseDto(Constant.CODE_ERROR, "Mật khẩu không khớp");
+        }
+        userEntity.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        userRepository.save(userEntity);
+        return new ResponseDto(Constant.CODE_SUCCESS, "Đổi mật khẩu thành công");
     }
 
 }

@@ -51,8 +51,8 @@ public class SecurityConfiguration {
                 .failureHandler(authenticationFailureHandlerCustom)
                 .successHandler(authenticationSuccessHandlerCustom)
 
-                .defaultSuccessUrl("/backend/user/list", true)
-                .failureUrl("/login?error=true")
+//                .defaultSuccessUrl("/backend/user/list", true)
+//                .failureUrl("/login?error=true")
         ;
         http.logout().logoutUrl("/logout");
         return http.build();

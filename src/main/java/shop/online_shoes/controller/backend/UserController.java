@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import shop.online_shoes.dto.ChangePasswordDto;
 import shop.online_shoes.dto.ProductDto;
+import shop.online_shoes.dto.ResponseDto;
 import shop.online_shoes.dto.UserDto;
 import shop.online_shoes.service.UserService;
 
@@ -86,6 +88,33 @@ public class UserController {
         return "redirect:/backend/user/list";
     }
 
+    @GetMapping("profile")
+    public String profile(Model model) {
+
+        return "/backend/user/profile";
+    }
+
+    @GetMapping("change-password")
+    public String changePassword(Model model) {
+        model.addAttribute("user", new ChangePasswordDto());
+        return "/backend/user/change-password";
+    }
+
+    @PostMapping(value = "change-password", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String changePasswordSave(@Valid @ModelAttribute("user") ChangePasswordDto userDto,
+                                     BindingResult bindingResult, RedirectAttributes model, Model m) {
+        if (!Objects.equals(userDto.getPassword(), userDto.getRePassword())) {
+            bindingResult.rejectValue("rePassword","error.userDto", "Mật khẩu không trùng khớp");
+        }
+        if (bindingResult.hasErrors()) {
+            return "/backend/user/change-password";
+        }
+        // Lấy ID của tài khoản  đa đăng nhập
+        ResponseDto responseDto = userService.changePassword(userDto);
+        model.addFlashAttribute("messsage", responseDto.getMessage());
+
+        return "redirect:/login";
+    }
 }
 
 
