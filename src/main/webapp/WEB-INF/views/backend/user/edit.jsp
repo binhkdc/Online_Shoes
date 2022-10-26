@@ -76,10 +76,7 @@
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Kích cỡ</div>
                                     </div>
                                     <label for="role">Đặc Quyền</label>
-                                    <sec:authorize access="isAuthenticated()">
 
-
-                                    </sec:authorize>
 
                                     <select class="form-select" aria-label="Default select example" id="role"
                                             name="role" required>
@@ -93,7 +90,10 @@
                                             name="status" required>
                                         <c:set var="status" value="${user.STATUS}"/>
 
+                                        <sec:authorize access="isAuthenticated()">
 
+
+                                        </sec:authorize>
                                         <c:choose>
                                             <c:when test="${status == 1}">
                                                 <option value="1" selected class="text-success"> Active</option>

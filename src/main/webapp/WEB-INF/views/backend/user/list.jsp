@@ -1,5 +1,6 @@
 <%@page pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@include file="/WEB-INF/views/layout/header.jsp"%>
 
 <section class="table-components">
@@ -46,12 +47,12 @@
                                 <thead>
                                 <tr>
                                     <th><h6>Id</h6></th>
-                                    <th><h6>Full_Name</h6></th>
-                                    <th><h6>Address</h6></th>
+                                    <th><h6>Tên Đầy Đủ</h6></th>
+                                    <th><h6>Địa Chỉ</h6></th>
                                     <th><h6>Email</h6></th>
-                                    <th><h6>Role</h6></th>
-                                    <th><h6>STATUS</h6></th>
-                                    <th><h6>Actions</h6></th>
+                                    <th><h6>Quyền</h6></th>
+                                    <th><h6>Trạng Thái</h6></th>
+                                    <th><h6>Chức Năng</h6></th>
                                 </tr>
                                 <!-- end table row-->
                                 </thead>
@@ -67,22 +68,38 @@
                                         <c:choose>
                                             <c:when test="${status == 1}">
                                                 <td class="min-width">
-                                                    <span class="status-btn active-btn">Active</span>
+                                                    <span class="status-btn active-btn">Hoạt Động</span>
                                                 </td>
                                             </c:when>
                                             <c:otherwise>
-                                                <td>
-                                                    <span class="status-btn close-btn">Close</span>
+                                                <td class="min-width">
+                                                    <span class="status-btn close-btn">Tạm Dừng</span>
                                                 </td>
                                             </c:otherwise>
                                         </c:choose>
-                                        <td>
-                                            <div class="action">
-                                                <a class="text-danger" href="/backend/user/edit/${user.ID}">
-                                                    <i class="lni lni-trash-can"></i>
-                                                </a>
-                                            </div>
-                                        </td>
+                                        <sec:authorize access="isAuthenticated()">
+                                            <c:set var="idlogin">
+                                                <sec:authentication property="principal.id"></sec:authentication>
+                                            </c:set>
+                                        </sec:authorize>
+
+                                            <c:set var="id" value="${user.ID}"/>
+                                            <c:choose>
+
+                                                <c:when test="${id == idlogin }">
+
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <td>
+                                                        <div class="action">
+                                                            <a class="text-danger" href="/backend/user/edit/${user.ID}">
+                                                                <i class="lni lni-pencil"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </c:otherwise>
+                                            </c:choose>
+
                                     </tr>
                                 </c:forEach>
                                 </tbody>
