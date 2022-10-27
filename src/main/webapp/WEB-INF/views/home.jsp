@@ -1,6 +1,6 @@
 <%@page pageEncoding="UTF-8" %>
 <%@include file="/WEB-INF/views/layout/head.jsp"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--==================== HEADER ====================-->
 
 
@@ -221,38 +221,18 @@
         </h2>
 
         <div class="products__container grid">
-            <article class="products__card">
-                <img src="/assets/frontend/img/products1.png" alt="" class="products__img">
+            <c:forEach var="product" items="${product}">
+                <article class="products__card">
+                    <img src="/assets/frontend/img/products1.png" alt="" class="products__img">
 
-                <h3 class="products__title"> Dunk Low SE "Neptune Green</h3>
-                <span class="products__price">$1500</span>
+                    <h3 class="products__title">${product.tengiay} </h3>
+                    <span class="products__price">$${product.gia}</span>
 
-                <button class="products__button">
-                    <i class='bx bx-shopping-bag'></i>
-                </button>
-            </article>
-
-            <article class="products__card">
-                <img src="/assets/frontend/img/products2.png" alt="" class="products__img">
-
-                <h3 class="products__title">𝐀𝐢𝐫 𝐅𝐨𝐫𝐜𝐞 𝟏 𝐏𝐞𝐚𝐫𝐥 𝐖𝐡𝐢𝐭𝐞</h3>
-                <span class="products__price">$1350</span>
-
-                <button class="products__button">
-                    <i class='bx bx-shopping-bag'></i>
-                </button>
-            </article>
-
-            <article class="products__card">
-                <img src="/assets/frontend/img/products3.png" alt="" class="products__img">
-
-                <h3 class="products__title">𝐀𝐢𝐫 𝐌𝐚𝐱 𝟗𝟎 𝐍𝐑𝐆 “𝐁𝐚𝐜𝐨𝐧”</h3>
-                <span class="products__price">$870</span>
-
-                <button class="products__button">
-                    <i class='bx bx-shopping-bag'></i>
-                </button>
-            </article>
+                    <button class="products__button">
+                        <i class='bx bx-shopping-bag'></i>
+                    </button>
+                </article>
+            </c:forEach>
 
 
             <h3 class="products__title">Duchen</h3>

@@ -20,7 +20,7 @@
 </head>
 <header class="header" id="header">
     <nav class="nav container">
-        <a href="#" class="nav__logo">
+        <a href="#home" class="nav__logo">
             NIKE
         </a>
 
@@ -56,11 +56,11 @@
             <div class="nav__shop" id="cart-shop">
                 <i class='bx bx-shopping-bag' ></i>
             </div>
-            <div class="nav__signup">
-                <a href="#" class="nav__link " id="nav-signup">Sign Up</a>
-            </div>
+<%--            <div class="nav__signup">--%>
+<%--                <a href="#" class="nav__link " id="nav-signup">Sign Up</a>--%>
+<%--            </div>--%>
             <div class="nav__login" >
-                <a href="#" class="nav__link " id="nav-login">Login</a>
+                <a href="/login1" class="nav__link " id="nav-login">Login</a>
             </div>
             <div class="nav__toggle" id="nav-toggle">
                 <i class='bx bx-grid-alt' ></i>
