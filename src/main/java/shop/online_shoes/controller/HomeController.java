@@ -11,8 +11,8 @@ import shop.online_shoes.service.ProducerService;
 public class HomeController {
     @Autowired
     ProducerService producerService;
-    @GetMapping("home")
-    public String login(Model model) {
+    @GetMapping("")
+    public String home(Model model) {
         try {
             model.addAttribute("product", producerService.list());
         } catch (Exception e) {

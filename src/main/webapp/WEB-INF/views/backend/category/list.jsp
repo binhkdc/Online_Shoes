@@ -56,13 +56,17 @@
                                     <tr>
                                         <td  class="min-width"><p>${category.maloaigiay}</p></td>
                                         <td  class="min-width"><p>${category.loaigiay}</p></td>
+                                        <td class="min-width">
+                                            <div class="action">
+                                                <a class="btn-lg text-success"
+                                                            href="/backend/category/edit/${category.maloaigiay}"><i class="lni lni-pencil"></i></a> <a
+                                                class="btn-lg text-danger"
+                                                href="/backend/category/delete/${category.maloaigiay}"><i class="lni lni-bitbucket"></i></a> <a
+                                                class="btn-lg text-primary"
+                                                href="/backend/category/details/${category.maloaigiay}"><i class="lni lni-eye"></i></a>
+                                            </div>
+                                        </td>
 
-                                        <td class="cell"><a class="btn-sm app-btn-secondary"
-                                                            href="/backend/category/edit/${category.maloaigiay}">Edit</a> <a
-                                                class="btn-sm app-btn-secondary"
-                                                href="/backend/category/delete/${category.maloaigiay}">Delete</a> <a
-                                                class="btn-sm app-btn-secondary"
-                                                href="/backend/category/details/${category.maloaigiay}">View</a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
