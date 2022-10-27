@@ -2,6 +2,7 @@ package shop.online_shoes.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @NoArgsConstructor
@@ -17,4 +18,5 @@ public class ProductDto {
     String hinhanh;
     String mota;
     Long maloaigiay;
+    MultipartFile fileImage;
 }
