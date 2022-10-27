@@ -1,756 +1,417 @@
-<%@include file="/WEB-INF/views/layout/header.jsp"%>
-<section class="table-components">
-    <div class="container-fluid">
-        <!-- ========== title-wrapper start ========== -->
-        <div class="title-wrapper pt-30">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="title mb-30">
-                        <h2>Tables</h2>
-                    </div>
-                </div>
-                <!-- end col -->
-                <div class="col-md-6">
-                    <div class="breadcrumb-wrapper mb-30">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item">
-                                    <a href="#0">Dashboard</a>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    Tables
-                                </li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-                <!-- end col -->
-            </div>
-            <!-- end row -->
-        </div>
-        <!-- ========== title-wrapper end ========== -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page pageEncoding="UTF-8" %>
+<%@include file="/WEB-INF/views/layout/head.jsp"%>
 
-        <!-- ========== tables-wrapper start ========== -->
-        <div class="tables-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card-style mb-30">
-                        <h6 class="mb-10">Data Table</h6>
-                        <p class="text-sm mb-20">
-                            For basic styling—light padding and only horizontal
-                            dividers—use the class table.
-                        </p>
-                        <div class="table-wrapper table-responsive">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th><h6>Lead</h6></th>
-                                    <th><h6>Email</h6></th>
-                                    <th><h6>Phone No</h6></th>
-                                    <th><h6>Company</h6></th>
-                                    <th><h6>Action</h6></th>
-                                </tr>
-                                <!-- end table row-->
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="min-width">
-                                        <div class="lead">
-                                            <div class="lead-image">
-                                                <img
-                                                        src="assets/images/lead/lead-1.png"
-                                                        alt=""
-                                                />
-                                            </div>
-                                            <div class="lead-text">
-                                                <p>Courtney Henry</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="min-width">
-                                        <p><a href="#0">yourmail@gmail.com</a></p>
-                                    </td>
-                                    <td class="min-width">
-                                        <p>(303)555 3343523</p>
-                                    </td>
-                                    <td class="min-width">
-                                        <p>UIdeck digital agency</p>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td class="min-width">
-                                        <div class="lead">
-                                            <div class="lead-image">
-                                                <img
-                                                        src="assets/images/lead/lead-2.png"
-                                                        alt=""
-                                                />
-                                            </div>
-                                            <div class="lead-text">
-                                                <p>JOhn Doe</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="min-width">
-                                        <p><a href="#0">yourmail@gmail.com</a></p>
-                                    </td>
-                                    <td class="min-width">
-                                        <p>(303)555 3343523</p>
-                                    </td>
-                                    <td class="min-width">
-                                        <p>Graygrids digital agency</p>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td class="min-width">
-                                        <div class="lead">
-                                            <div class="lead-image">
-                                                <img
-                                                        src="assets/images/lead/lead-3.png"
-                                                        alt=""
-                                                />
-                                            </div>
-                                            <div class="lead-text">
-                                                <p>David Smith</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="min-width">
-                                        <p><a href="#0">yourmail@gmail.com</a></p>
-                                    </td>
-                                    <td class="min-width">
-                                        <p>(303)555 3343523</p>
-                                    </td>
-                                    <td class="min-width">
-                                        <p>Abc agency</p>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td class="min-width">
-                                        <div class="lead">
-                                            <div class="lead-image">
-                                                <img
-                                                        src="assets/images/lead/lead-4.png"
-                                                        alt=""
-                                                />
-                                            </div>
-                                            <div class="lead-text">
-                                                <p>Jonathon</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="min-width">
-                                        <p><a href="#0">yourmail@gmail.com</a></p>
-                                    </td>
-                                    <td class="min-width">
-                                        <p>(303)555 3343523</p>
-                                    </td>
-                                    <td class="min-width">
-                                        <p>Creative IT Agency</p>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <div class="lead">
-                                            <div class="lead-image">
-                                                <img
-                                                        src="assets/images/lead/lead-5.png"
-                                                        alt=""
-                                                />
-                                            </div>
-                                            <div class="lead-text">
-                                                <p>Anna Lee</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p><a href="#0">yourmail@gmail.com</a></p>
-                                    </td>
-                                    <td>
-                                        <p>(303)555 3343523</p>
-                                    </td>
-                                    <td>
-                                        <p>Halal It agency</p>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <div class="lead">
-                                            <div class="lead-image">
-                                                <img
-                                                        src="assets/images/lead/lead-6.png"
-                                                        alt=""
-                                                />
-                                            </div>
-                                            <div class="lead-text">
-                                                <p>Gray Simon</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p><a href="#0">yourmail@gmail.com</a></p>
-                                    </td>
-                                    <td>
-                                        <p>(303)555 3343523</p>
-                                    </td>
-                                    <td>
-                                        <p>DesignCourse</p>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                </tbody>
-                            </table>
-                            <!-- end table -->
-                        </div>
-                    </div>
-                    <!-- end card -->
-                </div>
-                <!-- end col -->
-            </div>
-            <!-- end row -->
+<!--==================== HEADER ====================-->
 
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="card-style mb-30">
-                        <h6 class="mb-10">Striped Table</h6>
-                        <p class="text-sm mb-20">
-                            For Striped Table—light padding and only horizontal
-                            dividers.
-                        </p>
-                        <div class="table-wrapper table-responsive">
-                            <table class="table striped-table">
-                                <thead>
-                                <tr>
-                                    <th></th>
-                                    <th><h6>Account No</h6></th>
-                                    <th><h6>Balance</h6></th>
-                                    <th><h6>Action</h6></th>
-                                </tr>
-                                <!-- end table row-->
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="check-input-primary">
-                                            <input
-                                                    class="form-check-input"
-                                                    type="checkbox"
-                                                    id="checkbox-1"
-                                            />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p>AC336 508 2157</p>
-                                    </td>
-                                    <td>
-                                        <p>$523</p>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <div class="check-input-primary">
-                                            <input
-                                                    class="form-check-input"
-                                                    type="checkbox"
-                                                    id="checkbox-2"
-                                            />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p>AC336 756 0987</p>
-                                    </td>
-                                    <td>
-                                        <p>$123</p>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <div class="check-input-primary">
-                                            <input
-                                                    class="form-check-input"
-                                                    type="checkbox"
-                                                    id="checkbox-3"
-                                            />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p>AC336 098 8765</p>
-                                    </td>
-                                    <td>
-                                        <p>$223</p>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <div class="check-input-primary">
-                                            <input
-                                                    class="form-check-input"
-                                                    type="checkbox"
-                                                    id="checkbox-4"
-                                            />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p>AC336 897 3242</p>
-                                    </td>
-                                    <td>
-                                        <p>$323</p>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <div class="check-input-primary">
-                                            <input
-                                                    class="form-check-input"
-                                                    type="checkbox"
-                                                    id="checkbox-5"
-                                            />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p>AC336 654 0987</p>
-                                    </td>
-                                    <td>
-                                        <p>$423</p>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <div class="check-input-primary">
-                                            <input
-                                                    class="form-check-input"
-                                                    type="checkbox"
-                                                    id="checkbox-6"
-                                            />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p>AC336 234 9804</p>
-                                    </td>
-                                    <td>
-                                        <p>$523</p>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                </tbody>
-                            </table>
-                            <!-- end table -->
-                        </div>
-                    </div>
-                    <!-- end card -->
-                </div>
-                <!-- end col -->
-                <div class="col-lg-6">
-                    <div class="card-style mb-30">
-                        <h6 class="mb-10">Table head options</h6>
-                        <p class="text-sm mb-20">
-                            Use one of two modifier classes to make thead appear light
-                            or dark gray.
-                        </p>
-                        <div class="table-wrapper table-responsive">
-                            <table class="table striped-table">
-                                <thead>
-                                <tr>
-                                    <th></th>
-                                    <th><h6>First Name</h6></th>
-                                    <th><h6>Last Name</h6></th>
-                                    <th><h6>Username</h6></th>
-                                </tr>
-                                <!-- end table row-->
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <h6 class="text-sm">#1</h6>
-                                    </td>
-                                    <td>
-                                        <p>Albert</p>
-                                    </td>
-                                    <td>
-                                        <p>Miles</p>
-                                    </td>
-                                    <td>
-                                        <p>@albert_miles</p>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <h6 class="text-sm">#2</h6>
-                                    </td>
-                                    <td>
-                                        <p>John</p>
-                                    </td>
-                                    <td>
-                                        <p>Doe</p>
-                                    </td>
-                                    <td>
-                                        <p>@john_doe</p>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <h6 class="text-sm">#3</h6>
-                                    </td>
-                                    <td>
-                                        <p>David</p>
-                                    </td>
-                                    <td>
-                                        <p>Smith</p>
-                                    </td>
-                                    <td>
-                                        <p>@davidsmith</p>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <h6 class="text-sm">#4</h6>
-                                    </td>
-                                    <td>
-                                        <p>Jameel</p>
-                                    </td>
-                                    <td>
-                                        <p>Kareem</p>
-                                    </td>
-                                    <td>
-                                        <p>@jkreem</p>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <h6 class="text-sm">#5</h6>
-                                    </td>
-                                    <td>
-                                        <p>Anna</p>
-                                    </td>
-                                    <td>
-                                        <p>Miles</p>
-                                    </td>
-                                    <td>
-                                        <p>@anna_miles</p>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <h6 class="text-sm">#6</h6>
-                                    </td>
-                                    <td>
-                                        <p>Hafiz</p>
-                                    </td>
-                                    <td>
-                                        <p>Miles</p>
-                                    </td>
-                                    <td>
-                                        <p>@hafiz_miles</p>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                </tbody>
-                            </table>
-                            <!-- end table -->
-                        </div>
-                    </div>
-                    <!-- end card -->
-                </div>
-                <!-- end col -->
-            </div>
-            <!-- end row -->
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card-style mb-30">
-                        <h6 class="mb-10">Data Table</h6>
-                        <p class="text-sm mb-20">
-                            For basic styling—light padding and only horizontal
-                            dividers—use the class table.
-                        </p>
-                        <div class="table-wrapper table-responsive">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th><h6>#</h6></th>
-                                    <th><h6>Name</h6></th>
-                                    <th><h6>Email</h6></th>
-                                    <th><h6>Project</h6></th>
-                                    <th><h6>Status</h6></th>
-                                    <th><h6>Action</h6></th>
-                                </tr>
-                                <!-- end table row-->
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="employee-image">
-                                            <img src="assets/images/lead/lead-1.png" alt="" />
-                                        </div>
-                                    </td>
-                                    <td class="min-width">
-                                        <p>Esther Howard</p>
-                                    </td>
-                                    <td class="min-width">
-                                        <p><a href="#0">yourmail@gmail.com</a></p>
-                                    </td>
-                                    <td class="min-width">
-                                        <p>Admin Dashboard Design</p>
-                                    </td>
-                                    <td class="min-width">
-                                        <span class="status-btn active-btn">Active</span>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <div class="employee-image">
-                                            <img src="assets/images/lead/lead-2.png" alt="" />
-                                        </div>
-                                    </td>
-                                    <td class="min-width">
-                                        <p>D. Jonathon</p>
-                                    </td>
-                                    <td class="min-width">
-                                        <p><a href="#0">yourmail@gmail.com</a></p>
-                                    </td>
-                                    <td class="min-width">
-                                        <p>React Dashboard</p>
-                                    </td>
-                                    <td class="min-width">
-                                        <span class="status-btn active-btn">Active</span>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <div class="employee-image">
-                                            <img src="assets/images/lead/lead-3.png" alt="" />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p>John Doe</p>
-                                    </td>
-                                    <td>
-                                        <p><a href="#0">yourmail@gmail.com</a></p>
-                                    </td>
-                                    <td>
-                                        <p>Bootstrap Template</p>
-                                    </td>
-                                    <td>
-                                        <span class="status-btn success-btn">Done</span>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <div class="employee-image">
-                                            <img src="assets/images/lead/lead-4.png" alt="" />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p>Rayhan Jamil</p>
-                                    </td>
-                                    <td>
-                                        <p><a href="#0">yourmail@gmail.com</a></p>
-                                    </td>
-                                    <td>
-                                        <p>Css Grid Template</p>
-                                    </td>
-                                    <td>
-                                        <span class="status-btn info-btn">Pending</span>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <div class="employee-image">
-                                            <img src="assets/images/lead/lead-5.png" alt="" />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p>Esther Howard</p>
-                                    </td>
-                                    <td>
-                                        <p><a href="#0">yourmail@gmail.com</a></p>
-                                    </td>
-                                    <td>
-                                        <p>Admin Dashboard Design</p>
-                                    </td>
-                                    <td>
-                                        <span class="status-btn close-btn">Close</span>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                <tr>
-                                    <td>
-                                        <div class="employee-image">
-                                            <img src="assets/images/lead/lead-6.png" alt="" />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p>Anee Doe</p>
-                                    </td>
-                                    <td>
-                                        <p><a href="#0">yourmail@gmail.com</a></p>
-                                    </td>
-                                    <td>
-                                        <p>Space Template Update</p>
-                                    </td>
-                                    <td>
-                                        <span class="status-btn active-btn">Active</span>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button class="text-danger">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- end table row -->
-                                </tbody>
-                            </table>
-                            <!-- end table -->
-                        </div>
-                    </div>
-                    <!-- end card -->
-                </div>
-                <!-- end col -->
+<!--==================== CART ====================-->
+<div class="cart" id="cart">
+    <i class='bx bx-x cart__close' id="cart-close"></i>
+
+    <h2 class="cart__title-center">My Cart</h2>
+
+    <div class="cart__container">
+        <article class="cart__card">
+            <div class="cart__box">
+                <img src="/assets/frontend/img/featured11.png" alt="" class="cart__img">
             </div>
-            <!-- end row -->
-        </div>
-        <!-- ========== tables-wrapper end ========== -->
+
+            <div class="cart__details">
+                <h3 class="cart__title">𝐉𝐨𝐫𝐝𝐚𝐧 𝟏 𝐑𝐞𝐭𝐫𝐨 𝐇𝐢𝐠𝐡 𝐎𝐆 𝐃𝐞𝐧𝐢𝐦</h3>
+                <span class="cart__price">$1050</span>
+
+                <div class="cart__amount">
+                    <div class="cart__amount-content">
+                                <span class="cart__amount-box">
+                                    <i class='bx bx-minus' ></i>
+                                </span>
+
+                        <span class="cart__amount-number">1</span>
+
+                        <span class="cart__amount-box">
+                                    <i class='bx bx-plus' ></i>
+                                </span>
+                    </div>
+
+                    <i class='bx bx-trash-alt cart__amount-trash' ></i>
+                </div>
+            </div>
+        </article>
+
+        <article class="cart__card">
+            <div class="cart__box">
+                <img src="/assets/frontend/img/new01.png" alt="" class="cart__img">
+            </div>
+
+            <div class="cart__details">
+                <h3 class="cart__title">𝐀𝐢𝐫 𝐉𝐨𝐫𝐝𝐚𝐧 𝟏 𝐑𝐞𝐭𝐫𝐨 𝐋𝐨𝐰 𝐎𝐆 "𝐁𝐥𝐞𝐚𝐜𝐡𝐞𝐝 𝐂𝐨𝐫𝐚𝐥"</h3>
+                <span class="cart__price">$980</span>
+
+                <div class="cart__amount">
+                    <div class="cart__amount-content">
+                                <span class="cart__amount-box">
+                                    <i class='bx bx-minus' ></i>
+                                </span>
+
+                        <span class="cart__amount-number">1</span>
+
+                        <span class="cart__amount-box">
+                                    <i class='bx bx-plus' ></i>
+                                </span>
+                    </div>
+
+                    <i class='bx bx-trash-alt cart__amount-trash' ></i>
+                </div>
+            </div>
+        </article>
+
+        <article class="cart__card">
+            <div class="cart__box">
+                <img src="/assets/frontend/img/products2.png" alt="" class="cart__img">
+            </div>
+
+            <div class="cart__details">
+                <h3 class="cart__title">𝐀𝐢𝐫 𝐅𝐨𝐫𝐜𝐞 𝟏 𝐏𝐞𝐚𝐫𝐥 𝐖𝐡𝐢𝐭𝐞</h3>
+                <span class="cart__price">$1350</span>
+
+                <div class="cart__amount">
+                    <div class="cart__amount-content">
+                                <span class="cart__amount-box">
+                                    <i class='bx bx-minus' ></i>
+                                </span>
+
+                        <span class="cart__amount-number">1</span>
+
+                        <span class="cart__amount-box">
+                                    <i class='bx bx-plus' ></i>
+                                </span>
+                    </div>
+
+                    <i class='bx bx-trash-alt cart__amount-trash' ></i>
+                </div>
+            </div>
+        </article>
     </div>
-    <!-- end container -->
-</section>
-<%@include file="/WEB-INF/views/layout/footer.jsp"%>
+
+    <div class="cart__prices">
+        <span class="cart__prices-item">3 items</span>
+        <span class="cart__prices-total">$2880</span>
+    </div>
+</div>
+
+<!--==================== MAIN ====================-->
+<main class="main">
+    <!--==================== HOME ====================-->
+    <section class="home" id="home">
+        <div class="home__container container grid">
+            <div class="home__img-bg">
+                <img src="/assets/frontend/img/niki.png" alt="" class="home__img">
+            </div>
+
+            <div class="home__social">
+                <a href="https://www.facebook.com/" target="_blank" class="home__social-link">
+                    Facebook
+                </a>
+                <a href="https://twitter.com/" target="_blank" class="home__social-link">
+                    Twitter
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="home__social-link">
+                    Instagram
+                </a>
+            </div>
+
+            <div class="home__data">
+                <h1 class="home__title">NEW SHOES <br> COLLECTIONS </h1>
+                <p class="home__description">
+                    Latest arrival of the new imported shoes of the NIKE series,
+                    with a modern and resistant design.
+                </p>
+                <span class="home__price">$1245</span>
+
+                <div class="home__btns">
+                    <a href="#" class="button button--gray button--small">
+                        Discover
+                    </a>
+
+                    <button class="button home__button">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--==================== FEATURED ====================-->
+    <section class="featured section container" id="featured">
+        <h2 class="section__title">
+            Featured
+        </h2>
+
+        <div class="featured__container grid">
+            <article class="featured__card">
+                <span class="featured__tag">Sale</span>
+
+                <img src="/assets/frontend/img/featured11.png" alt="" class="featured__img">
+
+                <div class="featured__data">
+                    <h3 class="featured__title">𝐉𝐨𝐫𝐝𝐚𝐧 𝟏 𝐑𝐞𝐭𝐫𝐨 𝐇𝐢𝐠𝐡 𝐎𝐆 𝐃𝐞𝐧𝐢𝐦</h3>
+                    <span class="featured__price">$1050</span>
+                </div>
+
+                <button class="button featured__button">ADD TO CART</button>
+            </article>
+
+            <article class="featured__card">
+                <span class="featured__tag">Sale</span>
+
+                <img src="/assets/frontend/img/nike.png" alt="" class="featured__img">
+
+                <div class="featured__data">
+                    <h3 class="featured__title">𝐀𝐢𝐫 𝐉𝐨𝐫𝐝𝐚𝐧 𝟏 𝐋𝐢𝐠𝐡𝐭 𝐎𝐥𝐢𝐯𝐞</h3>
+                    <span class="featured__price">$250</span>
+                </div>
+
+                <button class="button featured__button">ADD TO CART</button>
+            </article>
+
+            <article class="featured__card">
+                <span class="featured__tag">Sale</span>
+
+                <img src="/assets/frontend/img/jordan.png" alt="" class="featured__img">
+
+                <div class="featured__data">
+                    <h3 class="featured__title">Jordan mid</h3>
+                    <span class="featured__price">$890</span>
+                </div>
+
+                <button class="button featured__button">ADD TO CART</button>
+            </article>
+        </div>
+    </section>
+
+    <!--==================== STORY ====================-->
+    <section class="story section container">
+        <div class="story__container grid">
+            <div class="story__data">
+                <h2 class="section__title story__section-title">
+                    Our Story
+                </h2>
+
+                <h1 class="story__title">
+                    Inspirational Shoes of <br> this year
+                </h1>
+
+                <p class="story__description">
+                    The latest and modern shoes of this year, is available in various
+                    presentations in this store, discover them now.
+                </p>
+
+                <a href="#" class="button button--small">Discover</a>
+            </div>
+
+            <div class="story__images">
+                <img src="/assets/frontend/img/story1.png" alt="" class="story__img">
+                <div class="story__square"></div>
+            </div>
+        </div>
+    </section>
+
+    <!--==================== PRODUCTS ====================-->
+    <section class="products section container" id="products">
+        <h2 class="section__title">
+            Products
+        </h2>
+
+        <div class="products__container grid">
+            <c:forEach var="product" items="${product}">
+                <article class="products__card">
+                    <img src="/assets/frontend/img/products1.png" alt="" class="products__img">
+
+                    <h3 class="products__title">${product.tengiay} </h3>
+                    <span class="products__price">$${product.gia}</span>
+
+                    <button class="products__button">
+                        <i class='bx bx-shopping-bag'></i>
+                    </button>
+                </article>
+            </c:forEach>
+
+<%--            <h3 class="products__title">Duchen</h3>--%>
+<%--            <span class="products__price">$950</span>--%>
+
+<%--            <button class="products__button">--%>
+<%--                <i class='bx bx-shopping-bag'></i>--%>
+<%--            </button>--%>
+        </div>
+    </section>
+
+    <!--==================== TESTIMONIAL ====================-->
+    <section class="testimonial section container">
+        <div class="testimonial__container grid">
+            <div class="swiper testimonial-swiper">
+                <div class="swiper-wrapper">
+                    <div class="testimonial__card swiper-slide">
+                        <div class="testimonial__quote">
+                            <i class='bx bxs-quote-alt-left' ></i>
+                        </div>
+                        <p class="testimonial__description">
+                            They are the best shoes that one acquires, also they are always with the latest
+                            news and trends, with a very comfortable price and especially with the attention
+                            you receive, they are always attentive to your questions.
+                        </p>
+                        <h3 class="testimonial__date">March 27. 2021</h3>
+
+                        <div class="testimonial__perfil">
+                            <img src="/assets/frontend/img/testimonial1.jpg" alt="" class="testimonial__perfil-img">
+
+                            <div class="testimonial__perfil-data">
+                                <span class="testimonial__perfil-name">Lee Doe</span>
+                                <span class="testimonial__perfil-detail">Director of a company</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial__card swiper-slide">
+                        <div class="testimonial__quote">
+                            <i class='bx bxs-quote-alt-left' ></i>
+                        </div>
+                        <p class="testimonial__description">
+                            They are the best watches that one acquires, also they are always with the latest
+                            news and trends, with a very comfortable price and especially with the attention
+                            you receive, they are always attentive to your questions.
+                        </p>
+                        <h3 class="testimonial__date">March 27. 2021</h3>
+
+                        <div class="testimonial__perfil">
+                            <img src="/assets/frontend/img/testimonial2.jpg" alt="" class="testimonial__perfil-img">
+
+                            <div class="testimonial__perfil-data">
+                                <span class="testimonial__perfil-name">Samantha Mey</span>
+                                <span class="testimonial__perfil-detail">Director of a company</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial__card swiper-slide">
+                        <div class="testimonial__quote">
+                            <i class='bx bxs-quote-alt-left' ></i>
+                        </div>
+                        <p class="testimonial__description">
+                            They are the best watches that one acquires, also they are always with the latest
+                            news and trends, with a very comfortable price and especially with the attention
+                            you receive, they are always attentive to your questions.
+                        </p>
+                        <h3 class="testimonial__date">March 27. 2021</h3>
+
+                        <div class="testimonial__perfil">
+                            <img src="/assets/frontend/img/testimonial3.jpg" alt="" class="testimonial__perfil-img">
+
+                            <div class="testimonial__perfil-data">
+                                <span class="testimonial__perfil-name">Raul Zaman</span>
+                                <span class="testimonial__perfil-detail">Director of a company</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-button-next">
+                    <i class='bx bx-right-arrow-alt' ></i>
+                </div>
+                <div class="swiper-button-prev">
+                    <i class='bx bx-left-arrow-alt' ></i>
+                </div>
+            </div>
+
+            <div class="testimonial__images">
+                <div class="testimonial__square"></div>
+                <img src="/assets/frontend/img/testimonial12.jpg" alt="" class="testimonial__img">
+            </div>
+        </div>
+    </section>
+
+    <!--==================== NEW ====================-->
+    <section class="new section container" id="new">
+        <h2 class="section__title">
+            New Arrivals
+        </h2>
+
+        <div class="new__container">
+            <div class="swiper new-swiper">
+                <div class="swiper-wrapper">
+                    <article class="new__card swiper-slide">
+                        <span class="new__tag">New</span>
+
+                        <img src="/assets/frontend/img/new01.png" alt="" class="new__img">
+
+                        <div class="new__data">
+                            <h3 class="new__title">𝐀𝐢𝐫 𝐉𝐨𝐫𝐝𝐚𝐧 𝟏 𝐑𝐞𝐭𝐫𝐨 𝐋𝐨𝐰 𝐎𝐆 "𝐁𝐥𝐞𝐚𝐜𝐡𝐞𝐝 𝐂𝐨𝐫𝐚𝐥"</h3>
+                            <span class="new__price">$980</span>
+                        </div>
+
+                        <button class="button new__button">ADD TO CART</button>
+                    </article>
+
+                    <article class="new__card swiper-slide">
+                        <span class="new__tag">New</span>
+
+                        <img src="/assets/frontend/img/new02.png" alt="" class="new__img">
+
+                        <div class="new__data">
+                            <h3 class="new__title">𝐁𝐥𝐚𝐳𝐞𝐫 𝐌𝐢𝐝 ‘𝟕𝟕 𝐉𝐮𝐦𝐛𝐨</h3>
+                            <span class="new__price">$1150</span>
+                        </div>
+
+                        <button class="button new__button">ADD TO CART</button>
+                    </article>
+
+                    <article class="new__card swiper-slide">
+                        <span class="new__tag">New</span>
+
+                        <img src="/assets/frontend/img/neww03.png" alt="" class="new__img">
+
+                        <div class="new__data">
+                            <h3 class="new__title">𝗔𝗶𝗿 𝗝𝗼𝗿𝗱𝗮𝗻 𝟭 𝗟𝗼𝘄 𝗥𝗼𝘀𝗲 𝗚𝗼𝗹𝗱</h3>
+                            <span class="new__price">$750</span>
+                        </div>
+
+                        <button class="button new__button">ADD TO CART</button>
+                    </article>
+
+                    <article class="new__card swiper-slide">
+                        <span class="new__tag">New</span>
+
+                        <img src="/assets/frontend/img/new04.png" alt="" class="new__img">
+
+                        <div class="new__data">
+                            <h3 class="new__title">𝐀𝐢𝐫 𝐉𝐨𝐫𝐝𝐚𝐧 𝟑 𝐑𝐞𝐭𝐫𝐨 "𝐃𝐚𝐫𝐤 𝐌𝐨𝐜𝐡𝐚"</h3>
+                            <span class="new__price">$1590</span>
+                        </div>
+
+                        <button class="button new__button">ADD TO CART</button>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--==================== NEWSLETTER ====================-->
+    <section class="newsletter section container">
+        <div class="newsletter__bg grid">
+            <div>
+                <h2 class="newsletter__title">Subscribe Our <br> Newsletter</h2>
+                <p class="newsletter__description">
+                    Don't miss out on your discounts. Subscribe to our email
+                    newsletter to get the best offers, discounts, coupons,
+                    gifts and much more.
+                </p>
+            </div>
+
+            <form action="" class="newsletter__subscribe">
+                <input type="email" placeholder="Enter your email" class="newsletter__input">
+                <button class="button button--small">
+                    SUBSCRIBE
+                </button>
+            </form>
+        </div>
+    </section>
+</main>
+<%@include file="/WEB-INF/views/layout/foot.jsp"%>
