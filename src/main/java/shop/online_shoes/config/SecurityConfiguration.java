@@ -35,7 +35,7 @@ public class SecurityConfiguration {
         // Chặn các request bắt đầu /backend/ bắt buộc đăng nhập
         http.authorizeRequests()
 //                .antMatchers("/backend/user/list").hasRole("ADMIN")
-//                .antMatchers("/backend/user/list").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/").hasAnyRole("ADMIN", "USER")
                 .antMatchers("/backend/**").hasRole("ADMIN")
                 .antMatchers("/anonymous*").anonymous()
                 .antMatchers("/backend/**").authenticated()
