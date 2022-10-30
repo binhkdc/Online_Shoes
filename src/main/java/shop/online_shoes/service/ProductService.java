@@ -17,34 +17,66 @@ import java.util.List;
 
 @Service
 public class ProductService {
-    public List<HashMap<String, String>> list () throws Exception {
-        List<HashMap<String, String>> UserDtoList = new ArrayList<>();
+
+    public List<ProductDto> list () throws Exception {
+         List<ProductDto> list = new ArrayList<>();
         Connection conn = DbUtils.getCollection();
         Statement sqlFile = conn.createStatement();
         try {
-            String selectSql = "SELECT `MaGiay`, `TenGiay`, nhasanxuat.TenNSX, `SoLuong`, `Size`, `MauSac`, `Gia`, `HinhAnh`, `MoTa`, loaigiay.LoaiGiay FROM `sanpham` JOIN nhasanxuat on nhasanxuat.MaNSX = sanpham.MaNSX JOIN loaigiay on loaigiay.MaLoaiGiay = sanpham.MaLoaiGiay";
+            String selectSql = "SELECT * FROM `sanpham`";
             ResultSet resultSet = sqlFile.executeQuery(selectSql);
-            while (resultSet.next()) {
-                HashMap<String,String> row = new HashMap<>();
 
-                row.put("magiay", resultSet.getString("MaGiay")) ;
-                row.put("tengiay",       resultSet.getString("TenGiay")) ;
-                row.put("mansx",   resultSet.getString("nhasanxuat.TenNSX")) ;
-                row.put("soluong", resultSet.getString("SoLuong")) ;
-                row.put("size",       resultSet.getString("Size")) ;
-                row.put("mausac",       resultSet.getString("MauSac")) ;
-                row.put("gia",   resultSet.getString("Gia")) ;
-                row.put("hinhanh", resultSet.getString("HinhAnh")) ;
-                row.put("mota",       resultSet.getString("MoTa")) ;
-                row.put("maloaigiay",       resultSet.getString("loaigiay.LoaiGiay")) ;
-                UserDtoList.add(row);
+            while (resultSet.next()) {
+                ProductDto productDto= new ProductDto();
+                productDto.setMagiay(resultSet.getInt("MaGiay"));
+                productDto.setTengiay(resultSet.getString("TenGiay"));
+                productDto.setMansx(resultSet.getLong("MaNSX"));
+                productDto.setSoluong(resultSet.getInt("SoLuong"));
+                productDto.setSize(resultSet.getString("Size"));
+                productDto.setMausac(resultSet.getString("MauSac"));
+                productDto.setGia(resultSet.getFloat("Gia"));
+                productDto.setHinhanh(resultSet.getString("HinhAnh"));
+                productDto.setMota(resultSet.getString("MoTa"));
+                productDto.setMaloaigiay(resultSet.getLong("MaLoaiGiay"));
+                list .add(productDto);
+
             }
             resultSet.close();
         } finally {
             sqlFile.close();
             conn.close();
         }
-        return UserDtoList;
+        return list;
+    }
+
+    public ProductDto findById (int magiay) throws Exception {
+        ProductDto productDto= new ProductDto();
+        Connection conn = DbUtils.getCollection();
+        Statement sqlFile = conn.createStatement();
+        try {
+            String selectSql = "SELECT * FROM `sanpham` where magiay ="+magiay+"";
+            ResultSet resultSet = sqlFile.executeQuery(selectSql);
+
+            while (resultSet.next()) {
+
+                productDto.setMagiay(resultSet.getInt("MaGiay"));
+                productDto.setTengiay(resultSet.getString("TenGiay"));
+                productDto.setMansx(resultSet.getLong("MaNSX"));
+                productDto.setSoluong(resultSet.getInt("SoLuong"));
+                productDto.setSize(resultSet.getString("Size"));
+                productDto.setMausac(resultSet.getString("MauSac"));
+                productDto.setGia(resultSet.getFloat("Gia"));
+                productDto.setHinhanh(resultSet.getString("HinhAnh"));
+                productDto.setMota(resultSet.getString("MoTa"));
+                productDto.setMaloaigiay(resultSet.getLong("MaLoaiGiay"));
+
+            }
+            resultSet.close();
+        } finally {
+            sqlFile.close();
+            conn.close();
+        }
+        return  productDto;
     }
 
     public List<HashMap<String, String>> details (String id) throws Exception {
@@ -122,4 +154,6 @@ public class ProductService {
             con.close();
         }
     }
+
+
 }

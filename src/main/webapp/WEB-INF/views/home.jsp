@@ -1,104 +1,51 @@
 <%@page pageEncoding="UTF-8" %>
-<%@include file="/WEB-INF/views/layout/head.jsp"%>
+<%@include file="/WEB-INF/views/layout/head.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--==================== HEADER ====================-->
 
 
-<!--==================== CART ====================-->
 <div class="cart" id="cart">
     <i class='bx bx-x cart__close' id="cart-close"></i>
 
     <h2 class="cart__title-center">My Cart</h2>
 
-    <div class="cart__container">
-        <article class="cart__card">
-            <div class="cart__box">
-                <img src="/assets/frontend/img/featured11.png" alt="" class="cart__img">
-            </div>
+    <div class="cart__container scrollspy-example">
+        <h1 class="text-danger">${message}</h1>
+        <c:forEach var="item" items="${CartItem}">
 
-            <div class="cart__details">
-                <h3 class="cart__title">𝐉𝐨𝐫𝐝𝐚𝐧 𝟏 𝐑𝐞𝐭𝐫𝐨 𝐇𝐢𝐠𝐡 𝐎𝐆 𝐃𝐞𝐧𝐢𝐦</h3>
-                <span class="cart__price">$1050</span>
-
-                <div class="cart__amount">
-                    <div class="cart__amount-content">
-                                <span class="cart__amount-box">
-                                    <i class='bx bx-minus' ></i>
-                                </span>
-
-                        <span class="cart__amount-number">1</span>
-
-                        <span class="cart__amount-box">
-                                    <i class='bx bx-plus' ></i>
-                                </span>
+            <form action="/shoppingCart/update" method="post">
+                <input type="hidden" value="${item.magiay}" name="magiay"/>
+                <article class="cart__card">
+                    <div class="cart__box">
+                        <img src="/assets/frontend/img/featured11.png" alt="" class="cart__img">
                     </div>
 
-                    <i class='bx bx-trash-alt cart__amount-trash' ></i>
-                </div>
-            </div>
-        </article>
+                    <div class="cart__details">
+                        <h3 class="cart__title">${item.tengiay}</h3>
+                        <span class="cart__price">$${item.gia}</span>
 
-        <article class="cart__card">
-            <div class="cart__box">
-                <img src="/assets/frontend/img/new01.png" alt="" class="cart__img">
-            </div>
+                        <div class="cart__amount">
+                            <div class="cart__amount-content custom-quantity-input">
+                                <a href="#" class="quantity-btn quantity-input-down"><i class='bx bx-minus'></i></a>
+                                <input type="text"  onblur="this.form.submit()"  class="" name="soluong" value="${item.soluong}">
+                                <a href="#" class="quantity-btn quantity-input-up"><i class='bx bx-plus'></i></a>
+                            </div>
+                            <a href="/shoppingCart/remove/${item.magiay}"><i
+                                    class='bx bx-trash-alt cart__amount-trash'></i></a>
 
-            <div class="cart__details">
-                <h3 class="cart__title">𝐀𝐢𝐫 𝐉𝐨𝐫𝐝𝐚𝐧 𝟏 𝐑𝐞𝐭𝐫𝐨 𝐋𝐨𝐰 𝐎𝐆 "𝐁𝐥𝐞𝐚𝐜𝐡𝐞𝐝 𝐂𝐨𝐫𝐚𝐥"</h3>
-                <span class="cart__price">$980</span>
-
-                <div class="cart__amount">
-                    <div class="cart__amount-content">
-                                <span class="cart__amount-box">
-                                    <i class='bx bx-minus' ></i>
-                                </span>
-
-                        <span class="cart__amount-number">1</span>
-
-                        <span class="cart__amount-box">
-                                    <i class='bx bx-plus' ></i>
-                                </span>
+                        </div>
                     </div>
+                </article>
+            </form>
+        </c:forEach>
 
-                    <i class='bx bx-trash-alt cart__amount-trash' ></i>
-                </div>
-            </div>
-        </article>
-
-        <article class="cart__card">
-            <div class="cart__box">
-                <img src="/assets/frontend/img/products2.png" alt="" class="cart__img">
-            </div>
-
-            <div class="cart__details">
-                <h3 class="cart__title">𝐀𝐢𝐫 𝐅𝐨𝐫𝐜𝐞 𝟏 𝐏𝐞𝐚𝐫𝐥 𝐖𝐡𝐢𝐭𝐞</h3>
-                <span class="cart__price">$1350</span>
-
-                <div class="cart__amount">
-                    <div class="cart__amount-content">
-                                <span class="cart__amount-box">
-                                    <i class='bx bx-minus' ></i>
-                                </span>
-
-                        <span class="cart__amount-number">1</span>
-
-                        <span class="cart__amount-box">
-                                    <i class='bx bx-plus' ></i>
-                                </span>
-                    </div>
-
-                    <i class='bx bx-trash-alt cart__amount-trash' ></i>
-                </div>
-            </div>
-        </article>
     </div>
-
+    
     <div class="cart__prices">
-        <span class="cart__prices-item">3 items</span>
-        <span class="cart__prices-total">$2880</span>
+        <span class="cart__prices-item">${Soluong} items</span>
+        <span class="cart__prices-total">$${Gia}</span>
     </div>
 </div>
-
 <!--==================== MAIN ====================-->
 <main class="main">
     <!--==================== HOME ====================-->
@@ -228,9 +175,9 @@
                     <h3 class="products__title">${product.tengiay} </h3>
                     <span class="products__price">$${product.gia}</span>
 
-                    <button class="products__button">
+                    <a href="/shoppingCart/add/${product.magiay}" class="products__button">
                         <i class='bx bx-shopping-bag'></i>
-                    </button>
+                    </a>
                 </article>
             </c:forEach>
 
@@ -251,7 +198,7 @@
                 <div class="swiper-wrapper">
                     <div class="testimonial__card swiper-slide">
                         <div class="testimonial__quote">
-                            <i class='bx bxs-quote-alt-left' ></i>
+                            <i class='bx bxs-quote-alt-left'></i>
                         </div>
                         <p class="testimonial__description">
                             They are the best shoes that one acquires, also they are always with the latest
@@ -272,7 +219,7 @@
 
                     <div class="testimonial__card swiper-slide">
                         <div class="testimonial__quote">
-                            <i class='bx bxs-quote-alt-left' ></i>
+                            <i class='bx bxs-quote-alt-left'></i>
                         </div>
                         <p class="testimonial__description">
                             They are the best watches that one acquires, also they are always with the latest
@@ -293,7 +240,7 @@
 
                     <div class="testimonial__card swiper-slide">
                         <div class="testimonial__quote">
-                            <i class='bx bxs-quote-alt-left' ></i>
+                            <i class='bx bxs-quote-alt-left'></i>
                         </div>
                         <p class="testimonial__description">
                             They are the best watches that one acquires, also they are always with the latest
@@ -314,10 +261,10 @@
                 </div>
 
                 <div class="swiper-button-next">
-                    <i class='bx bx-right-arrow-alt' ></i>
+                    <i class='bx bx-right-arrow-alt'></i>
                 </div>
                 <div class="swiper-button-prev">
-                    <i class='bx bx-left-arrow-alt' ></i>
+                    <i class='bx bx-left-arrow-alt'></i>
                 </div>
             </div>
 
@@ -414,4 +361,20 @@
         </div>
     </section>
 </main>
-<%@include file="/WEB-INF/views/layout/foot.jsp"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    jQuery(function ($) {
+
+        $(".quantity-btn").on("click", function (e) {
+            e.preventDefault();                               // Don't scroll top.
+            var $inp = $(this).closest("div").find("input"),  // Get input
+                isUp = $(this).is(".quantity-input-up"),      // Is up clicked? (Boolean)
+                currVal = parseInt($inp.val(), 10);           // Get curr val
+            $inp.val(Math.max(0, currVal += isUp ? 1 : -1));  // Assign new val
+        });
+
+        // Other DOM ready code here
+
+    });
+</script>
+<%@include file="/WEB-INF/views/layout/foot.jsp" %>

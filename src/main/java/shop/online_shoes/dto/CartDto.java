@@ -3,15 +3,11 @@ package shop.online_shoes.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDto implements Serializable {
-
+public class CartDto {
     int magiay;
     String tengiay;
     Long mansx;
@@ -22,6 +18,4 @@ public class ProductDto implements Serializable {
     String hinhanh;
     String mota;
     Long maloaigiay;
-    MultipartFile fileImage;
-
 }

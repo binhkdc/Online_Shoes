@@ -1,3 +1,5 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +62,21 @@
 <%--                <a href="#" class="nav__link " id="nav-signup">Sign Up</a>--%>
 <%--            </div>--%>
             <div class="nav__login" >
-                <a href="/login1" class="nav__link " id="nav-login">Login</a>
+                <sec:authorize access="!isAuthenticated()">
+
+                    <a href="/login" class="nav__link " id="nav-login">Login</a>
+
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+
+                    <p>Hello:  <sec:authentication property="principal.fullName"></sec:authentication></p>
+
+                </sec:authorize>
+            </div>
+            <div class="nav__login" >
+                <sec:authorize access="isAuthenticated()">
+                    <a href="/logout" class="nav__link " id="nav-login">Logout</a>
+                </sec:authorize>
             </div>
             <div class="nav__toggle" id="nav-toggle">
                 <i class='bx bx-grid-alt' ></i>
