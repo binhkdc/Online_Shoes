@@ -40,7 +40,7 @@
         </c:forEach>
 
     </div>
-    
+
     <div class="cart__prices">
         <span class="cart__prices-item">${Soluong} items</span>
         <span class="cart__prices-total">$${Gia}</span>
@@ -170,7 +170,7 @@
         <div class="products__container grid">
             <c:forEach var="product" items="${product}">
                 <article class="products__card">
-                    <img src="/assets/frontend/img/products1.png" alt="" class="products__img">
+                    <img src="/assets/frontend/img/${product.hinhanh}" alt="" class="products__img">
 
                     <h3 class="products__title">${product.tengiay} </h3>
                     <span class="products__price">$${product.gia}</span>
@@ -180,10 +180,6 @@
                     </a>
                 </article>
             </c:forEach>
-
-
-            <h3 class="products__title">Duchen</h3>
-            <span class="products__price">$950</span>
 
             <button class="products__button">
                 <i class='bx bx-shopping-bag'></i>
