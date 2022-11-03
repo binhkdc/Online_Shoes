@@ -95,8 +95,8 @@
                             </button>
                         </div>
                         <div class="header-search d-none d-md-flex">
-                            <form action="#">
-                                <input type="text" placeholder="Search..." />
+                            <form action="" method="post">
+                                <input type="text" placeholder="Search..." name="keywork" />
                                 <button><i class="lni lni-search-alt"></i></button>
                             </form>
                         </div>

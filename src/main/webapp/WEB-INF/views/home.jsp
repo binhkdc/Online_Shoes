@@ -10,14 +10,14 @@
     <h2 class="cart__title-center">My Cart</h2>
 
     <div class="cart__container scrollspy-example">
-        <h1 class="text-danger">${message}</h1>
+
         <c:forEach var="item" items="${CartItem}">
 
             <form action="/shoppingCart/update" method="post">
                 <input type="hidden" value="${item.magiay}" name="magiay"/>
                 <article class="cart__card">
                     <div class="cart__box">
-                        <img src="/assets/frontend/img/featured11.png" alt="" class="cart__img">
+                        <img src="/assets/frontend/img/${hinhanh}" alt="" class="cart__img">
                     </div>
 
                     <div class="cart__details">

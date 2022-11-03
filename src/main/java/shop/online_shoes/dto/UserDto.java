@@ -17,6 +17,6 @@ public class UserDto {
     String password;
     String rePassword;
     String role;
-    Long Status;
+    int status;
     MultipartFile fileImage;
 }
