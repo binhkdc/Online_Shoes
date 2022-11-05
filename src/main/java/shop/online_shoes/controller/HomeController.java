@@ -1,6 +1,7 @@
 package shop.online_shoes.controller;
 
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -13,10 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.yaml.snakeyaml.util.ArrayUtils;
-import shop.online_shoes.dto.CartDto;
-import shop.online_shoes.dto.Detail_export_invoiceDto;
-import shop.online_shoes.dto.Export_invoiceDto;
-import shop.online_shoes.dto.UserDto;
+import shop.online_shoes.dto.*;
 import shop.online_shoes.service.*;
 
 import javax.validation.Valid;
@@ -63,7 +61,7 @@ public class HomeController {
     }
 
     @PostMapping("checkOut")
-    public String checkOut(@RequestParam("userid") int userid, Model model, Export_invoiceDto export_invoiceDto, Detail_export_invoiceDto detail_export_invoiceDto) {
+    public String checkOut(@RequestParam("userid") int userid, Model model, Export_invoiceDto export_invoiceDto, Detail_export_invoiceDto detail_export_invoiceDto, ProductDto productDto) {
 
         try {
             Collection<CartDto> cartDtos = cartService.getCart();
@@ -77,12 +75,20 @@ public class HomeController {
                     detail_export_invoiceDto.setSoluong(value.getSoluong());
                     detail_export_invoiceDto.setGia(value.getGia());
                     try {
+                        ProductDto productDtoList= productService.findById(value.getMagiay());
+
+                        if (productDtoList != null) {
+                            productService.findById(value.getMagiay());
+                            productDtoList.setUpdateSoluong(productDtoList.getSoluong()-value.getSoluong());
+                            productService.updateSoluong(productDtoList);
+                        }
                         detail_export_invoiceService.save(detail_export_invoiceDto);
+
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                 });
-                
+
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import shop.online_shoes.config.language.MessageConfig;
 import shop.online_shoes.dto.UserDto;
+import shop.online_shoes.service.CartService;
 import shop.online_shoes.service.UserService;
 
 import javax.validation.Valid;
@@ -22,6 +23,9 @@ public class HelloController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    CartService cartService;
     
     @RequestMapping("/HelloWorld")
     public String firstPage() {
@@ -31,6 +35,7 @@ public class HelloController {
 
     @GetMapping("login" )
     public String login(Model model, @RequestParam(required = false) String error) {
+        cartService.ClearCart();
         if(error!=null){
             model.addAttribute("message",messageConfig.getMessage(error));
         }

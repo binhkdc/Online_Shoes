@@ -187,10 +187,18 @@
 
                     <h3 class="products__title">${product.tengiay} </h3>
                     <span class="products__price">$${product.gia}</span>
+                    <c:set var="soluong" value="${product.soluong}"/>
+                    <c:choose>
+                        <c:when test="${soluong == 0 }">
+                            <span class="products__button">Hết Hàng!!</span>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/shoppingCart/add/${product.magiay}" class="products__button">
+                                <i class='bx bx-shopping-bag'></i>
+                            </a>
+                        </c:otherwise>
+                    </c:choose>
 
-                    <a href="/shoppingCart/add/${product.magiay}" class="products__button">
-                        <i class='bx bx-shopping-bag'></i>
-                    </a>
                 </article>
             </c:forEach>
 

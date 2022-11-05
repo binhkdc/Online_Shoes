@@ -50,4 +50,8 @@ public class CartService {
         return cart.values().size();
     }
 
+    public void ClearCart(){
+        cart.clear();
+    }
+
 }
