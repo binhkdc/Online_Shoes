@@ -31,47 +31,72 @@
             <!-- end row -->
         </div>
         <!-- ========== title-wrapper end ========== -->
-        <div class="tables-wrapper">
 
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="card-style mb-30">
-                        <h6 class="mb-10"></h6>
-                        <p class="text-sm text-danger mb-20">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <img src="/assets/frontend/img/nike5.png" alt="Nike" class=" img-fluid" style="width: 250px;">
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p class="text-sm text-danger mb-20">
                             ${message}
-                        </p>
-                        <f:form method="post" action="/backend/user/change-password" modelAttribute="user" enctype="multipart/form-data">
+                            </p>
+                            <f:form method="post" action="/backend/user/change-password" modelAttribute="user" enctype="multipart/form-data">
                             <div class="row">
-                                <div class="row g-3">
-                                    <div class="col">
-                                        <f:input type="password" class="form-control" path="oldPassword" placeholder="Mật khẩu cũ" aria-label="Mật khẩu cũ"/>
-                                        <f:errors path="oldPassword" cssClass="error"></f:errors>
-                                    </div>
+                                <div class="col-sm-3">
+                                    <h4>Mật khẩu cũ:</p>
                                 </div>
-                                <div class="row g-3">
-                                    <div class="col">
-                                        <f:input type="password" class="form-control" path="password" placeholder="Mật khẩu" aria-label="Mật khẩu"/>
-                                        <f:errors path="password" cssClass="error"></f:errors>
-                                    </div>
-                                    <div class="col">
-                                        <f:input type="password" path="rePassword" class="form-control" placeholder="Nhập lại mật khẩu" aria-label="Nhập lại mật khẩu" />
-                                        <f:errors path="rePassword" cssClass="error"></f:errors>
-                                    </div>
+                                <div class="col-sm-9">
+                                    <f:input type="password" class="form-control" path="oldPassword" placeholder="Mật khẩu cũ" aria-label="Mật khẩu cũ"/>
+                                    <f:errors path="oldPassword" cssClass="error"></f:errors>
                                 </div>
                             </div>
-                            <br>
-                            <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary btn-block mb-4 g-3">Đổi mật khẩu</button>
-                        </f:form>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h4>Mật khẩu:</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <f:input type="password" class="form-control" path="password" placeholder="Mật khẩu" aria-label="Mật khẩu"/>
+                                    <f:errors path="password" cssClass="error"></f:errors>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h4>Nhập lại mật khẩu:</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <f:input type="password" path="rePassword" class="form-control" placeholder="Nhập lại mật khẩu" aria-label="Nhập lại mật khẩu" />
+                                    <f:errors path="rePassword" cssClass="error"></f:errors>
+                                </div>
+                            </div>
+                            <hr>
+                                <div class="profile-card-ctr">
+                                    <a href="#" class="profile-card__button button--blue js-message-btn" type="submit">Đổi mật khẩu </a>
+
+                                </div>
+                            </f:form>
+                        </div>
                     </div>
-                    <!-- end card -->
+
                 </div>
                 <!-- end col -->
-            </div>
+                </div>
             <!-- end row -->
-        </div>
 
-    </div>
+            </div>
+
     <!-- end container -->
 </section>
 

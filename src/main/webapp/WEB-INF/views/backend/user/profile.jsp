@@ -34,70 +34,87 @@
             <!-- end row -->
         </div>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="card mb-4">
-                    <div class="card-body text-center">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-                             class="rounded-circle img-fluid" style="width: 150px;">
-                        <h5 class="my-3"><sec:authentication property="principal.fullName"></sec:authentication></h5>
+        <div class="wrapper">
+            <div class="profile-card js-profile-card">
+                <div class="profile-card__img">
+                    <img src="/assets/frontend/img/nike6.jpg"  alt="profile card">
+                </div>
 
-                        <p class="text-muted mb-4"><sec:authentication property="principal.address"></sec:authentication></p>
-                        <div class="d-flex justify-content-center mb-2">
-                            <a href="/backend/user/change-password" type="button" class="btn btn-primary">Change password</a>
-                        </div>
+                <div class="profile-card__cnt js-profile-cnt">
+                    <div class="profile-card__name"><sec:authentication property="principal.fullName"></sec:authentication></div>
+                    <div class="profile-card__txt"><strong><sec:authentication property="principal.address"></sec:authentication></strong></div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Full Name :</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0"><sec:authentication property="principal.fullName"></sec:authentication></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Email :</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0"><sec:authentication property="principal.email"></sec:authentication></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">ROLE :</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0"><sec:authentication property="principal.role"></sec:authentication></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">Address :</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0"><sec:authentication property="principal.address"></sec:authentication></p>
+                                    </div>
+                                </div>
+
+
+                    <div class="profile-card-ctr">
+                        <a href="/backend/user/change-password" class="profile-card__button button--blue js-message-btn" type="button">Change password </a>
+
                     </div>
                 </div>
 
             </div>
-            <div class="col-lg-8">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">Full Name</p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0"><sec:authentication property="principal.fullName"></sec:authentication></p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">Email</p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0"><sec:authentication property="principal.email"></sec:authentication></p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">ROLE</p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0"><sec:authentication property="principal.role"></sec:authentication></p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">Address</p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0"><sec:authentication property="principal.address"></sec:authentication></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
         </div>
     </div>
 
 </sec:authorize>
 </section>
 
+<script>
+
+
+    var card = document.querySelector('.js-profile-card');
+    var closeBtn = document.querySelectorAll('.js-message-close');
+
+    btn.addEventListener('click',function (e) {
+        e.preventDefault();
+        card.classList.add('active');
+    });
+
+    closeBtn.forEach(function (element, index) {
+        console.log(element);
+        element.addEventListener('click',function (e) {
+            e.preventDefault();
+            card.classList.remove('active');
+        });
+    });
+</script>
 
 
 <%@include file="/WEB-INF/views/layout/footer.jsp"%>

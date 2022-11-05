@@ -181,13 +181,6 @@
                 </article>
             </c:forEach>
 
-
-            <h3 class="products__title">Duchen</h3>
-            <span class="products__price">$950</span>
-
-            <button class="products__button">
-                <i class='bx bx-shopping-bag'></i>
-            </button>
         </div>
     </section>
 
