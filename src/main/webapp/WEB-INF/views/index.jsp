@@ -9,7 +9,7 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Danh sách sản phẩm</h2>
+                        <h2>Biểu đồ sản phẩm</h2>
                     </div>
                 </div>
                 <!-- end col -->
@@ -18,10 +18,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="#0">Product</a>
+                                    <a href="#0">Dashboard</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    List
+                                    Chart
                                 </li>
                             </ol>
                         </nav>
@@ -50,9 +50,6 @@
                         <div class="row g-4 mb-4">
                             <div class="col-12">
                                 <div class="app-card app-card-chart h-100 shadow-sm">
-                                    <div class="app-card-header p-3 border-0">
-                                        <h4 class="app-card-title">Biểu đồ quản lý sinh viên</h4>
-                                    </div>
                                     <!--//app-card-header-->
                                     <div class="app-card-body p-4">
                                         <div class="chart-container">
@@ -79,42 +76,7 @@
                                                         'rgba(255, 159, 64, 1)' ],
                                                     borderWidth : 1
                                                 }
-                                                <%--const data2={--%>
-                                                <%--    label : 'Điểm Cao Nhất',--%>
-                                                <%--    data : <%out.print(jsonMax_score);%>,--%>
-                                                <%--    backgroundColor : [--%>
-                                                <%--        'rgba(255, 99, 132, 0.2)',--%>
-                                                <%--        'rgba(54, 162, 235, 0.2)',--%>
-                                                <%--        'rgba(255, 206, 86, 0.2)',--%>
-                                                <%--        'rgba(75, 192, 192, 0.2)',--%>
-                                                <%--        'rgba(153, 102, 255, 0.2)',--%>
-                                                <%--        'rgba(255, 159, 64, 0.2)' ],--%>
-                                                <%--    borderColor : [--%>
-                                                <%--        'rgba(54, 162, 235, 1)',--%>
-                                                <%--        'rgba(255, 206, 86, 1)',--%>
-                                                <%--        'rgba(75, 192, 192, 1)',--%>
-                                                <%--        'rgba(153, 102, 255, 1)',--%>
-                                                <%--        'rgba(255, 159, 64, 1)' ],--%>
-                                                <%--    borderWidth : 1--%>
-                                                <%--}--%>
-                                                <%--const data3={--%>
-                                                <%--    label : 'Điểm Thấp Nhất',--%>
-                                                <%--    data : <%out.print(jsonMin_score);%>,--%>
-                                                <%--    backgroundColor : [--%>
-                                                <%--        'rgba(255, 99, 132, 0.2)',--%>
-                                                <%--        'rgba(54, 162, 235, 0.2)',--%>
-                                                <%--        'rgba(255, 206, 86, 0.2)',--%>
-                                                <%--        'rgba(75, 192, 192, 0.2)',--%>
-                                                <%--        'rgba(153, 102, 255, 0.2)',--%>
-                                                <%--        'rgba(255, 159, 64, 0.2)' ],--%>
-                                                <%--    borderColor : [--%>
-                                                <%--        'rgba(54, 162, 235, 1)',--%>
-                                                <%--        'rgba(255, 206, 86, 1)',--%>
-                                                <%--        'rgba(75, 192, 192, 1)',--%>
-                                                <%--        'rgba(153, 102, 255, 1)',--%>
-                                                <%--        'rgba(255, 159, 64, 1)' ],--%>
-                                                <%--    borderWidth : 1--%>
-                                                <%--}--%>
+
                                                 const myChart = new Chart(ctx, {
                                                     type : 'bar',
                                                     data : {
