@@ -54,7 +54,7 @@
                             <f:form method="post" action="/backend/user/change-password" modelAttribute="user" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h4>Mật khẩu cũ:</p>
+                                    <h4>Mật khẩu cũ:</h4>
                                 </div>
                                 <div class="col-sm-9">
                                     <f:input type="password" class="form-control" path="oldPassword" placeholder="Mật khẩu cũ" aria-label="Mật khẩu cũ"/>
@@ -64,7 +64,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h4>Mật khẩu:</p>
+                                    <h4>Mật khẩu:</h4>
                                 </div>
                                 <div class="col-sm-9">
                                     <f:input type="password" class="form-control" path="password" placeholder="Mật khẩu" aria-label="Mật khẩu"/>
@@ -74,7 +74,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h4>Nhập lại mật khẩu:</p>
+                                    <h4>Nhập lại mật khẩu:</h4>
                                 </div>
                                 <div class="col-sm-9">
                                     <f:input type="password" path="rePassword" class="form-control" placeholder="Nhập lại mật khẩu" aria-label="Nhập lại mật khẩu" />
@@ -83,7 +83,7 @@
                             </div>
                             <hr>
                                 <div class="profile-card-ctr">
-                                    <a href="#" class="profile-card__button button--blue js-message-btn" type="submit">Đổi mật khẩu </a>
+                                    <button class="profile-card__button button--blue js-message-btn" type="submit">Đổi mật khẩu </button>
 
                                 </div>
                             </f:form>
