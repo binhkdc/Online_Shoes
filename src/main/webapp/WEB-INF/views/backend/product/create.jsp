@@ -76,6 +76,7 @@
                                     <div class="valid-feedback">Vô cùng chính xác.</div>
                                     <div class="invalid-feedback">Vui lòng nhập vào trường Giá</div>
                                 </div>
+
                                 <div class="col-md-12">
                                     <label for="fileImage" class="form-label">Hình ảnh</label>
                                     <input type="file" placeholder="hinhanh" class="form-control" id="fileImage" name="fileImage" required>

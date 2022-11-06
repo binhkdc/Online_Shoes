@@ -60,7 +60,7 @@
                                 <tbody>
                                 <c:forEach var="product" items="${list}">
                                     <tr>
-                                        <td  class="min-width"><p>${product.magiay}</p></td>
+                                        <td class="min-width"><p>${product.magiay}</p></td>
                                         <td class="min-width"><p>${product.tengiay}</p></td>
                                         <td class="min-width"><p><a href="#">${product.mansx}</a></p></td>
                                         <td class="min-width"><p>${product.soluong}</p></td>

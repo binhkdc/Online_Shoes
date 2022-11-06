@@ -202,9 +202,7 @@
                 </article>
             </c:forEach>
 
-            <button class="products__button">
-                <i class='bx bx-shopping-bag'></i>
-            </button>
+
         </div>
     </section>
 
