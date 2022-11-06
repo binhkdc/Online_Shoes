@@ -2,6 +2,7 @@ package shop.online_shoes.service;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import shop.online_shoes.dto.Detail_export_invoiceDto;
 import shop.online_shoes.dto.ProducerDto;
 import shop.online_shoes.dto.ProductDto;
 import shop.online_shoes.dto.UserDto;
@@ -155,5 +156,19 @@ public class ProductService {
         }
     }
 
+    public void updateSoluong(ProductDto productDto) throws Exception {
+        Connection con = DbUtils.getCollection();
+        Statement sqlFile = con.createStatement();
+        try {
+            // Bước 3: Tạo câu truy vấn
+            String selectSql = "UPDATE `sanpham` SET `SoLuong`="+productDto.getUpdateSoluong()+" WHERE `MaGiay`="+productDto.getMagiay()+" ";
+            // Bước 4; Run kết quả
+            sqlFile.execute(selectSql);
+        } finally {
+            // Bước 5: Đóng kết nối
+            sqlFile.close();
+            con.close();
+        }
+    }
 
 }

@@ -23,5 +23,5 @@ public class ProductDto implements Serializable {
     String mota;
     Long maloaigiay;
     MultipartFile fileImage;
-
+    int updateSoluong;
 }

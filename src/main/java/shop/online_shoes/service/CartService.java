@@ -15,6 +15,7 @@ import java.util.*;
 public class CartService {
     Map<Integer, CartDto> cart =new HashMap<Integer,CartDto>();
 
+
     public void   add (CartDto item)  {
             CartDto exitedItem= cart.get(item.getMagiay());
             if(exitedItem != null){
@@ -48,4 +49,9 @@ public class CartService {
     public int getCount(){
         return cart.values().size();
     }
+
+    public void ClearCart(){
+        cart.clear();
+    }
+
 }

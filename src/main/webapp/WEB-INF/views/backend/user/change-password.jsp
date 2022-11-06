@@ -20,7 +20,7 @@
                                     <a href="/backend/user/list">User</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    List
+                                    Change Password
                                 </li>
                             </ol>
                         </nav>

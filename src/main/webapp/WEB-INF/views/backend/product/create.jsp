@@ -38,7 +38,7 @@
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
                         <span style="color: red">${message}</span>
-                        <form method="post" class="row g-3 was-validated d-flex justify-content-center" action="save">
+                        <form method="post" class="row g-3 was-validated d-flex justify-content-center" action="save" enctype="multipart/form-data">
                             <div class="col-sm-12 p-3 ">
                                 <div class="col-md-12">
                                     <label for="tengiay" class="form-label">Tên Giày</label>
@@ -78,8 +78,8 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="hinhanh" class="form-label">Hình ảnh</label>
-                                    <input type="text" placeholder="hinhanh" class="form-control" id="hinhanh" name="hinhanh" required>
+                                    <label for="fileImage" class="form-label">Hình ảnh</label>
+                                    <input type="file" placeholder="hinhanh" class="form-control" id="fileImage" name="fileImage" required>
                                     <div class="valid-feedback">Vô cùng chính xác.</div>
                                     <div class="invalid-feedback">Vui lòng nhập vào trường Hình ảnh</div>
                                 </div>

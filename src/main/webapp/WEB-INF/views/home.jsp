@@ -1,6 +1,7 @@
 <%@page pageEncoding="UTF-8" %>
 <%@include file="/WEB-INF/views/layout/head.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!--==================== HEADER ====================-->
 
 
@@ -10,14 +11,14 @@
     <h2 class="cart__title-center">My Cart</h2>
 
     <div class="cart__container scrollspy-example">
-        <h1 class="text-danger">${message}</h1>
+
         <c:forEach var="item" items="${CartItem}">
 
             <form action="/shoppingCart/update" method="post">
                 <input type="hidden" value="${item.magiay}" name="magiay"/>
                 <article class="cart__card">
                     <div class="cart__box">
-                        <img src="/assets/frontend/img/featured11.png" alt="" class="cart__img">
+                        <img src="/assets/frontend/img/${hinhanh}" alt="" class="cart__img">
                     </div>
 
                     <div class="cart__details">
@@ -25,10 +26,12 @@
                         <span class="cart__price">$${item.gia}</span>
 
                         <div class="cart__amount">
-                            <div class="cart__amount-content custom-quantity-input">
-                                <a href="#" class="quantity-btn quantity-input-down"><i class='bx bx-minus'></i></a>
-                                <input type="text"  onblur="this.form.submit()"  class="" name="soluong" value="${item.soluong}">
-                                <a href="#" class="quantity-btn quantity-input-up"><i class='bx bx-plus'></i></a>
+                            <div class="cart__amount-content ">
+                                <div class="custom-quantity-input">
+                                    <a href="#" class="quantity-btn quantity-input-down"><i class='bx bx-minus'></i></a>
+                                    <input type="text"  onblur="this.form.submit()"  class="" name="soluong" value="${item.soluong}">
+                                    <a href="#" class="quantity-btn quantity-input-up"><i class='bx bx-plus'></i></a>
+                                </div>
                             </div>
                             <a href="/shoppingCart/remove/${item.magiay}"><i
                                     class='bx bx-trash-alt cart__amount-trash'></i></a>
@@ -40,11 +43,21 @@
         </c:forEach>
 
     </div>
-    
+
     <div class="cart__prices">
         <span class="cart__prices-item">${Soluong} items</span>
         <span class="cart__prices-total">$${Gia}</span>
     </div>
+    <sec:authorize access="isAuthenticated()">
+        <c:set var="userid">
+            <sec:authentication property="principal.id"></sec:authentication>
+        </c:set>
+        <form action="/checkOut" method="post">
+            <input value="${userid}" name="userid">
+            <input type="submit" value="checkOut">
+        </form>
+    </sec:authorize>
+
 </div>
 <!--==================== MAIN ====================-->
 <main class="main">
@@ -170,16 +183,25 @@
         <div class="products__container grid">
             <c:forEach var="product" items="${product}">
                 <article class="products__card">
-                    <img src="/assets/frontend/img/products1.png" alt="" class="products__img">
+                    <img src="/assets/frontend/img/${product.hinhanh}" alt="" class="products__img">
 
                     <h3 class="products__title">${product.tengiay} </h3>
                     <span class="products__price">$${product.gia}</span>
+                    <c:set var="soluong" value="${product.soluong}"/>
+                    <c:choose>
+                        <c:when test="${soluong == 0 }">
+                            <span class="products__button">Hết Hàng!!</span>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/shoppingCart/add/${product.magiay}" class="products__button">
+                                <i class='bx bx-shopping-bag'></i>
+                            </a>
+                        </c:otherwise>
+                    </c:choose>
 
-                    <a href="/shoppingCart/add/${product.magiay}" class="products__button">
-                        <i class='bx bx-shopping-bag'></i>
-                    </a>
                 </article>
             </c:forEach>
+
 
         </div>
     </section>
@@ -236,11 +258,11 @@
                             <i class='bx bxs-quote-alt-left'></i>
                         </div>
                         <p class="testimonial__description">
-                            They are the best watches that one acquires, also they are always with the latest
-                            news and trends, with a very comfortable price and especially with the attention
-                            you receive, they are always attentive to your questions.
+                            Mọi người thường gọi tôi là chuyên gia định giá sản phẩm, và đúng như vậy. tôi chính là
+                            một chuyên gia định giá sản phẩm =))
+
                         </p>
-                        <h3 class="testimonial__date">March 27. 2021</h3>
+                        <h3 class="testimonial__date">November 4. 2022</h3>
 
                         <div class="testimonial__perfil">
                             <img src="/assets/frontend/img/testimonial3.jpg" alt="" class="testimonial__perfil-img">

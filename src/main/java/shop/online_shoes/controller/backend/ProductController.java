@@ -13,12 +13,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import shop.online_shoes.dto.ProductDto;
 import shop.online_shoes.dto.UserDto;
 import shop.online_shoes.service.CategoryService;
+import shop.online_shoes.service.FileUploadService;
 import shop.online_shoes.service.ProducerService;
 import shop.online_shoes.service.ProductService;
 
 
+
+import javax.servlet.ServletContext;
+import javax.validation.Path;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @Service
 @RequestMapping("/backend/product")
@@ -57,8 +64,9 @@ public class ProductController {
         return "/backend/product/create";
     }
 
-
-    @PostMapping(value = "save", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @Autowired
+    FileUploadService fileUploadService;
+    @PostMapping(value = "save", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces  = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String save(@Valid @ModelAttribute("userDto") ProductDto productDto,
                        BindingResult bindingResult, RedirectAttributes model, Model m) {
         if (bindingResult.hasErrors()) {
@@ -66,6 +74,8 @@ public class ProductController {
         }
 
         try {
+            fileUploadService.uploadfile(productDto.getFileImage());
+            productDto.setHinhanh(productDto.getFileImage().getOriginalFilename());
             productService.save(productDto);
             model.addFlashAttribute("message", "Tạo mới sản phẩm thành công");
         } catch (Exception e) {
@@ -125,6 +135,8 @@ public class ProductController {
         return "/backend/product/delete";
     }
 
+
+
     @PostMapping(value = "deleteProduct", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String deleteProduct(ProductDto productDto,
                          BindingResult bindingResult, RedirectAttributes model, Model m) {
@@ -139,5 +151,8 @@ public class ProductController {
         }
         return "redirect:/backend/product/list";
     }
+
+
+
 
 }
