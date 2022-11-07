@@ -18,6 +18,9 @@
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="/assets/frontend/css/styles.css">
 
+    <!--============= Paging========= -->
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+
     <title>Nike website</title>
 </head>
 <header class="header" id="header">

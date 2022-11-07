@@ -149,49 +149,24 @@
                 </article>
             </c:forEach>
         </div>
-        <h2 class="section__title">
+<%---------------------- PAGING ---------------------%>
+
             <nav class="app-pagination">
-                <ul class="pagination justify-content-center">
-
-                    <c:set var="activepage" value="${pagination.activePage}" />
-                    <c:choose>
-                        <c:when test="${activepage == 1}">
-                            <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
-                        </c:when>
-                        <c:otherwise>
-                            <li class="page-item"><a class="page-link"
-                                                     href="/home?page=${pagination.prePage}#products">&laquo;</a></li>
-                        </c:otherwise>
-                    </c:choose>
-                    <c:forEach var="Total" begin="1" end="${totalend+1}">
-                        <c:set var="activepage" value="${activepage}" />
-                        <c:set var="Page" value="${Total}" />
-                        <c:choose>
-                            <c:when test="${activepage == Page}">
-                                <li class="page-item active" aria-current="page"><span
-                                        class="page-link">${Total}</span></li>
-                            </c:when>
-                            <c:otherwise>
-                                <li class="page-item"><a class="page-link"
-                                                         href="/home?page=${Total}#products">${Total}</a></li>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
-                    <c:set var="activepage" value="${pagination.activePage}" />
-                    <c:set var="Page" value="${totalend}" />
-                    <c:choose>
-                        <c:when test="${activepage == Page+1}">
-                            <li class="page-item disabled"><a class="page-link" href="#">&raquo;</a></li>
-                        </c:when>
-                        <c:otherwise>
-                            <li class="page-item"><a class="page-link"
-                                                     href="/home?page=${pagination.nextPage}#products">&raquo;</a></li>
-                        </c:otherwise>
-                    </c:choose>
-
+                <ul class="pagination modal-1">
+                    <li><a href="#" class="prev">&laquo</a></li>
+                    <li><a href="#" class="active">1</a></li>
+                    <li> <a href="#">2</a></li>
+                    <li> <a href="#">3</a></li>
+                    <li> <a href="#">4</a></li>
+                    <li> <a href="#">5</a></li>
+                    <li> <a href="#">6</a></li>
+                    <li> <a href="#">7</a></li>
+                    <li> <a href="#">8</a></li>
+                    <li> <a href="#">9</a></li>
+                    <li><a href="#" class="next">&raquo;</a></li>
                 </ul>
             </nav>
-        </h2>
+
 
     </section>
 
