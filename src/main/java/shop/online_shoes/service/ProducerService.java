@@ -3,6 +3,7 @@ package shop.online_shoes.service;
 import org.springframework.stereotype.Service;
 import shop.online_shoes.dto.CategoryDto;
 import shop.online_shoes.dto.ProducerDto;
+import shop.online_shoes.dto.ProductDto;
 import shop.online_shoes.utils.DbUtils;
 
 import java.sql.Connection;
@@ -70,6 +71,36 @@ public class ProducerService {
         try {
             // Bước 3: Tạo câu truy vấn
             String selectSql = "INSERT INTO `nhasanxuat`( `TenNSX`, `DiaChi`, `Email`, `SDT`) VALUES ('"+producerDto.getTennsx()+"','"+producerDto.getDiachi()+"','"+producerDto.getEmail()+"',"+producerDto.getSdt()+")";
+            // Bước 4; Run kết quả
+            sqlFile.execute(selectSql);
+        } finally {
+            // Bước 5: Đóng kết nối
+            sqlFile.close();
+            con.close();
+        }
+    }
+
+    public void update(ProducerDto producerDto) throws Exception {
+        Connection con = DbUtils.getCollection();
+        Statement sqlFile = con.createStatement();
+        try {
+            // Bước 3: Tạo câu truy vấn
+            String selectSql = "UPDATE `nhasanxuat` SET `TenNSX`='"+producerDto.getTennsx()+"',`DiaChi`='"+producerDto.getDiachi()+"',`Email`='"+producerDto.getEmail()+"',`SDT`="+producerDto.getSdt()+" WHERE `MaNSX`="+producerDto.getMansx()+"";
+            // Bước 4; Run kết quả
+            sqlFile.execute(selectSql);
+        } finally {
+            // Bước 5: Đóng kết nối
+            sqlFile.close();
+            con.close();
+        }
+    }
+
+    public void delete(ProducerDto producerDto) throws Exception {
+        Connection con = DbUtils.getCollection();
+        Statement sqlFile = con.createStatement();
+        try {
+            // Bước 3: Tạo câu truy vấn
+            String selectSql = "DELETE FROM `nhasanxuat` WHERE `MaNSX`="+producerDto.getMansx()+" ";
             // Bước 4; Run kết quả
             sqlFile.execute(selectSql);
         } finally {

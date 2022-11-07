@@ -63,11 +63,11 @@
                                         <td><p>${producer.email}</p></td>
                                         <td><p>${producer.sdt}</p></td>
                                         <td class="min-width"><a class="text-success btn-lg"
-                                                                 href="/backend/producer/edit/${producer.mnsx}"><i class="lni lni-pencil"></i></a> <a
+                                                                 href="/backend/producer/edit/${producer.mansx}"><i class="lni lni-pencil"></i></a> <a
                                                 class="text-danger btn-lg"
-                                                href="/backend/producer/delete/${producer.mnsx}"><i class="lni lni-trash-can"></i></a> <a
+                                                href="/backend/producer/delete/${producer.mansx}"><i class="lni lni-trash-can"></i></a> <a
                                                 class="text-primary btn-lg"
-                                                href="/backend/producer/details/${producer.mnsx}"><i class="lni lni-eye"></i></a></td>
+                                                href="/backend/producer/details/${producer.mansx}"><i class="lni lni-eye"></i></a></td>
                                     </tr>
                                     </tr>
                                 </c:forEach>

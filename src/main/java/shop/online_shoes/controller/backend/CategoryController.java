@@ -87,9 +87,9 @@ public class CategoryController {
         }
         try {
             categoryService.update(categoryDto);
-            model.addFlashAttribute("message", "Sửa Loại sản phẩm thành công");
+            model.addFlashAttribute("message", "Sửa Loại giày thành công");
         } catch (Exception e) {
-            model.addFlashAttribute("message", "Sửa Loại sản phẩm không thành công");
+            model.addFlashAttribute("message", "Sửa Loại giày không thành công");
         }
         return "redirect:/backend/category/list";
     }
@@ -114,9 +114,9 @@ public class CategoryController {
         }
         try {
             categoryService.delete(categoryDto);
-            model.addFlashAttribute("message", "Xóa Loại thành công");
+            model.addFlashAttribute("message", "Xóa Loại giày thành công");
         } catch (Exception e) {
-            model.addFlashAttribute("message", "Xóa Loại không thành công");
+            model.addFlashAttribute("message", "Xóa Loại giày không thành công vì có liên kết với bảng sản phẩm");
         }
         return "redirect:/backend/category/list";
     }
