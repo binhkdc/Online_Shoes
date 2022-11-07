@@ -42,6 +42,28 @@ public class CategoryService {
         return UserDtoList;
     }
 
+    public List<HashMap<String, String>> detailCategory (int id) throws Exception {
+        List<HashMap<String, String>> UserDtoList = new ArrayList<>();
+        Connection conn = DbUtils.getCollection();
+        Statement sqlFile = conn.createStatement();
+        try {
+            String selectSql = "Select * from loaigiay where MaLoaiGiay ="+id+" ";
+            ResultSet resultSet = sqlFile.executeQuery(selectSql);
+            while (resultSet.next()) {
+                HashMap<String,String> row = new HashMap<>();
+                row.put("maloaigiay", resultSet.getString("MaLoaiGiay")) ;
+                row.put("loaigiay",       resultSet.getString("LoaiGiay")) ;
+
+                UserDtoList.add(row);
+            }
+            resultSet.close();
+        } finally {
+            sqlFile.close();
+            conn.close();
+        }
+        return UserDtoList;
+    }
+
     public void save(CategoryDto categoryDto) throws Exception {
         Connection con = DbUtils.getCollection();
         Statement sqlFile = con.createStatement();

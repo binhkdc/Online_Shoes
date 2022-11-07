@@ -51,6 +51,27 @@ public class ProductController {
         return "/backend/product/list";
     }
 
+    @GetMapping(value = {"/detail_producer/{id}"})
+    public String details_producer(@PathVariable int id, Model model) {
+        try {
+            model.addAttribute("detail_producer", producerService.details(id));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "/backend/product/producer";
+    }
+
+    @GetMapping(value = {"/detail_category/{id}"})
+    public String details_category(@PathVariable int id, Model model) {
+        try {
+            model.addAttribute("detail_category", categoryService.detailCategory(id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "/backend/product/category";
+    }
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("create")
     public String createProduct(Model model) {

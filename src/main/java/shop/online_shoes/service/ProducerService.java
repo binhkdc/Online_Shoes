@@ -28,6 +28,30 @@ public class ProducerService {
                 row.put("diachi", resultSet.getString("DiaChi")) ;
                 row.put("email",       resultSet.getString("Email")) ;
                 row.put("sdt",       resultSet.getString("SDT")) ;
+                UserDtoList.add(row);
+            }
+            resultSet.close();
+        } finally {
+            sqlFile.close();
+            conn.close();
+        }
+        return UserDtoList;
+    }
+
+    public List<HashMap<String, String>> details (int id) throws Exception {
+        List<HashMap<String, String>> UserDtoList = new ArrayList<>();
+        Connection conn = DbUtils.getCollection();
+        Statement sqlFile = conn.createStatement();
+        try {
+            String selectSql = "Select * from nhasanxuat where MaNSX= "+id+"";
+            ResultSet resultSet = sqlFile.executeQuery(selectSql);
+            while (resultSet.next()) {
+                HashMap<String,String> row = new HashMap<>();
+                row.put("mansx", resultSet.getString("MaNSX")) ;
+                row.put("tennsx",       resultSet.getString("TenNSX")) ;
+                row.put("diachi", resultSet.getString("DiaChi")) ;
+                row.put("email",       resultSet.getString("Email")) ;
+                row.put("sdt",       resultSet.getString("SDT")) ;
 
 
                 UserDtoList.add(row);
