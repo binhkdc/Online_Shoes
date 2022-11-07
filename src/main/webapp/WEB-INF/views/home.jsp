@@ -4,7 +4,35 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!--==================== HEADER ====================-->
 
+<style>
+    /*Result Skip Results Iframe*/
+    /*EDIT ON*/
+    .center {
+        text-align: center;
+    }
 
+    .pagination {
+        display: inline-block;
+    }
+
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+    }
+
+    .pagination a.active {
+        background-color: #4CAF50;
+        color: white;
+        border: 1px solid #4CAF50;
+    }
+
+    .pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
 
 <!--==================== MAIN ====================-->
 <main class="main">
@@ -33,14 +61,14 @@
                     Latest arrival of the new imported shoes of the NIKE series,
                     with a modern and resistant design.
                 </p>
-                <span class="home__price">$1245</span>
+                <span class="home__price">$1235</span>
 
                 <div class="home__btns">
                     <a href="#" class="button button--gray button--small">
                         Discover
                     </a>
+                    <a href="/shoppingCart/add/19" class="button home__button">ADD TO CART</a>
 
-                    <button class="button home__button">ADD TO CART</button>
                 </div>
             </div>
         </div>
@@ -149,24 +177,48 @@
                 </article>
             </c:forEach>
         </div>
-<%---------------------- PAGING ---------------------%>
 
-            <nav class="app-pagination">
-                <ul class="pagination modal-1">
-                    <li><a href="#" class="prev">&laquo</a></li>
-                    <li><a href="#" class="active">1</a></li>
-                    <li> <a href="#">2</a></li>
-                    <li> <a href="#">3</a></li>
-                    <li> <a href="#">4</a></li>
-                    <li> <a href="#">5</a></li>
-                    <li> <a href="#">6</a></li>
-                    <li> <a href="#">7</a></li>
-                    <li> <a href="#">8</a></li>
-                    <li> <a href="#">9</a></li>
-                    <li><a href="#" class="next">&raquo;</a></li>
-                </ul>
-            </nav>
+        <h2 class="section__title m-3">
 
+
+
+        </h2>
+        <div class="center" style="text-align: center">
+            <div class="pagination">
+                <c:set var="activepage" value="${pagination.activePage}" />
+                <c:choose>
+                    <c:when test="${activepage == 1}">
+                        <a href="#">&laquo;</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="/home?page=${pagination.prePage}#products">&laquo;</a>
+                    </c:otherwise>
+                </c:choose>
+                <c:forEach var="Total" begin="1" end="${totalend+1}">
+                    <c:set var="activepage" value="${activepage}" />
+                    <c:set var="Page" value="${Total}" />
+                    <c:choose>
+                        <c:when test="${activepage == Page}">
+                            <a class="active">${Total}</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/home?page=${Total}#products">${Total}</a>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+                <c:set var="activepage" value="${pagination.activePage}" />
+                <c:set var="Page" value="${totalend}" />
+                <c:choose>
+                    <c:when test="${activepage == Page+1}">
+                        <a href="#">&raquo;</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="/home?page=${pagination.nextPage}#products">&raquo;</a>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+
+        </div>
 
     </section>
 
@@ -263,57 +315,20 @@
         <div class="new__container">
             <div class="swiper new-swiper">
                 <div class="swiper-wrapper">
-                    <article class="new__card swiper-slide">
-                        <span class="new__tag">New</span>
+                    <c:forEach var="product" items="${listNew}">
+                        <article class="new__card swiper-slide">
+                            <span class="new__tag">New</span>
 
-                        <img src="/assets/frontend/img/new01.png" alt="" class="new__img">
+                            <img src="/assets/frontend/img/${product.hinhanh}" alt="" class="new__img">
 
-                        <div class="new__data">
-                            <h3 class="new__title">𝐀𝐢𝐫 𝐉𝐨𝐫𝐝𝐚𝐧 𝟏 𝐑𝐞𝐭𝐫𝐨 𝐋𝐨𝐰 𝐎𝐆 "𝐁𝐥𝐞𝐚𝐜𝐡𝐞𝐝 𝐂𝐨𝐫𝐚𝐥"</h3>
-                            <span class="new__price">$980</span>
-                        </div>
+                            <div class="new__data">
+                                <h3 class="new__title">${product.tengiay}</h3>
+                                <span class="new__price">$${product.gia}</span>
+                            </div>
 
-                        <button class="button new__button">ADD TO CART</button>
-                    </article>
-
-                    <article class="new__card swiper-slide">
-                        <span class="new__tag">New</span>
-
-                        <img src="/assets/frontend/img/new02.png" alt="" class="new__img">
-
-                        <div class="new__data">
-                            <h3 class="new__title">𝐁𝐥𝐚𝐳𝐞𝐫 𝐌𝐢𝐝 ‘𝟕𝟕 𝐉𝐮𝐦𝐛𝐨</h3>
-                            <span class="new__price">$1150</span>
-                        </div>
-
-                        <button class="button new__button">ADD TO CART</button>
-                    </article>
-
-                    <article class="new__card swiper-slide">
-                        <span class="new__tag">New</span>
-
-                        <img src="/assets/frontend/img/neww03.png" alt="" class="new__img">
-
-                        <div class="new__data">
-                            <h3 class="new__title">𝗔𝗶𝗿 𝗝𝗼𝗿𝗱𝗮𝗻 𝟭 𝗟𝗼𝘄 𝗥𝗼𝘀𝗲 𝗚𝗼𝗹𝗱</h3>
-                            <span class="new__price">$750</span>
-                        </div>
-
-                        <button class="button new__button">ADD TO CART</button>
-                    </article>
-
-                    <article class="new__card swiper-slide">
-                        <span class="new__tag">New</span>
-
-                        <img src="/assets/frontend/img/new04.png" alt="" class="new__img">
-
-                        <div class="new__data">
-                            <h3 class="new__title">𝐀𝐢𝐫 𝐉𝐨𝐫𝐝𝐚𝐧 𝟑 𝐑𝐞𝐭𝐫𝐨 "𝐃𝐚𝐫𝐤 𝐌𝐨𝐜𝐡𝐚"</h3>
-                            <span class="new__price">$1590</span>
-                        </div>
-
-                        <button class="button new__button">ADD TO CART</button>
-                    </article>
+                            <a href="/shoppingCart/add/${product.magiay}" class="button new__button">ADD TO CART</a>
+                        </article>
+                    </c:forEach>
                 </div>
             </div>
         </div>
