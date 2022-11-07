@@ -9,7 +9,7 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Danh sách sản phẩm</h2>
+                        <h2>Danh sách sản phẩm (${countsize.countsize} Sản Phẩm)</h2>
                     </div>
                 </div>
                 <!-- end col -->
@@ -77,6 +77,47 @@
                                 </c:forEach>
                                 </tbody>
                             </table>
+                            <nav class="app-pagination">
+                                <ul class="pagination justify-content-center">
+
+                                        <c:set var="activepage" value="${pagination.activePage}" />
+                                        <c:choose>
+                                            <c:when test="${activepage == 1}">
+                                                <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li class="page-item"><a class="page-link"
+                                                                         href="list?page=${pagination.prePage}">&laquo;</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <c:forEach var="Total" begin="1" end="${totalend+1}">
+                                            <c:set var="activepage" value="${activepage}" />
+                                            <c:set var="Page" value="${Total}" />
+                                            <c:choose>
+                                                <c:when test="${activepage == Page}">
+                                                    <li class="page-item active" aria-current="page"><span
+                                                            class="page-link">${Total}</span></li>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <li class="page-item"><a class="page-link"
+                                                                             href="/backend/product/list?page=${Total}">${Total}</a></li>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
+                                        <c:set var="activepage" value="${pagination.activePage}" />
+                                        <c:set var="Page" value="${totalend}" />
+                                        <c:choose>
+                                            <c:when test="${activepage == Page+1}">
+                                                <li class="page-item disabled"><a class="page-link" href="#">&raquo;</a></li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li class="page-item"><a class="page-link"
+                                                                         href="list?page=${pagination.nextPage}">&raquo;</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
+
+                                </ul>
+                            </nav>
                             <!-- end table -->
                         </div>
                     </div>

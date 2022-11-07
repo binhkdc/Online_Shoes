@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import shop.online_shoes.dto.PaginationDto;
 import shop.online_shoes.dto.ProductDto;
 import shop.online_shoes.dto.UserDto;
 import shop.online_shoes.service.CategoryService;
@@ -42,9 +43,21 @@ public class ProductController {
     ProducerService producerService;
 
     @GetMapping("list")
-    public String list(Model model) {
+    public String list(@RequestParam(defaultValue = "1") int page, Model model, PaginationDto paginationDto) {
         try {
-            model.addAttribute("list", productService.list());
+
+            paginationDto.setActivePage(page);
+            paginationDto.setPage(page);
+            paginationDto.setPageSize(5);
+            paginationDto.setCount(paginationDto.getPageSize() * (page-1));
+            paginationDto.setPrePage(paginationDto.getActivePage()-1);
+            paginationDto.setNextPage(paginationDto.getActivePage()+1);
+            double c = Math.ceil(productService.countSize().getCountsize() / paginationDto.getPageSize());
+
+            model.addAttribute("countsize",productService.countSize());
+            model.addAttribute("totalend",c);
+            model.addAttribute("pagination",paginationDto);
+            model.addAttribute("list", productService.list(paginationDto));
         } catch (Exception e) {
             e.printStackTrace();
         }

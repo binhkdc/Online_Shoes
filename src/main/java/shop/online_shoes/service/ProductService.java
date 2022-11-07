@@ -2,10 +2,7 @@ package shop.online_shoes.service;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-import shop.online_shoes.dto.Detail_export_invoiceDto;
-import shop.online_shoes.dto.ProducerDto;
-import shop.online_shoes.dto.ProductDto;
-import shop.online_shoes.dto.UserDto;
+import shop.online_shoes.dto.*;
 import shop.online_shoes.entities.UserEntity;
 import shop.online_shoes.utils.DbUtils;
 
@@ -19,12 +16,12 @@ import java.util.List;
 @Service
 public class ProductService {
 
-    public List<ProductDto> list () throws Exception {
+    public List<ProductDto> list (PaginationDto paginationDto) throws Exception {
          List<ProductDto> list = new ArrayList<>();
         Connection conn = DbUtils.getCollection();
         Statement sqlFile = conn.createStatement();
         try {
-            String selectSql = "SELECT * FROM `sanpham`";
+            String selectSql = "SELECT * FROM `sanpham` limit "+paginationDto.getPageSize()+" offset "+paginationDto.getCount()+"";
             ResultSet resultSet = sqlFile.executeQuery(selectSql);
 
             while (resultSet.next()) {
@@ -169,6 +166,25 @@ public class ProductService {
             sqlFile.close();
             con.close();
         }
+    }
+
+    public ProductDto countSize () throws Exception {
+        ProductDto productDto= new ProductDto();
+        Connection conn = DbUtils.getCollection();
+        Statement sqlFile = conn.createStatement();
+        try {
+            String selectSql = "SELECT COUNT(MaGiay) as countSize FROM sanpham";
+            ResultSet resultSet = sqlFile.executeQuery(selectSql);
+
+            while (resultSet.next()) {
+                productDto.setCountsize(resultSet.getInt("countSize"));
+            }
+            resultSet.close();
+        } finally {
+            sqlFile.close();
+            conn.close();
+        }
+        return  productDto;
     }
 
 }

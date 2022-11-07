@@ -24,4 +24,6 @@ public class ProductDto implements Serializable {
     Long maloaigiay;
     MultipartFile fileImage;
     int updateSoluong;
+
+    int countsize;
 }

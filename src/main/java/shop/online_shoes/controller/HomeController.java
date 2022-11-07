@@ -7,11 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.yaml.snakeyaml.util.ArrayUtils;
 import shop.online_shoes.dto.*;
@@ -38,11 +35,24 @@ public class HomeController {
     @Autowired
     CartService cartService;
 
-    @GetMapping("")
-    public String home(Model model) {
+    @GetMapping("home")
+    public String home(@RequestParam(defaultValue = "1") int page,Model model,PaginationDto paginationDto)  {
 
         try {
-            model.addAttribute("product", productService.list());
+            paginationDto.setActivePage(page);
+            paginationDto.setPage(page);
+            paginationDto.setPageSize(5);
+            paginationDto.setCount(paginationDto.getPageSize() * (page-1));
+            paginationDto.setPrePage(paginationDto.getActivePage()-1);
+            paginationDto.setNextPage(paginationDto.getActivePage()+1);
+            double c = Math.ceil(productService.countSize().getCountsize() / paginationDto.getPageSize());
+
+            model.addAttribute("countsize",productService.countSize());
+            model.addAttribute("totalend",c);
+            model.addAttribute("pagination",paginationDto);
+            model.addAttribute("list", productService.list(paginationDto));
+            paginationDto.setPage(page);
+            model.addAttribute("product", productService.list(paginationDto));
 
         } catch (Exception e) {
             e.printStackTrace();
