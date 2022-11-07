@@ -4,7 +4,35 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!--==================== HEADER ====================-->
 
+<style>
+    Result Skip Results Iframe
+    EDIT ON
+    .center {
+        text-align: center;
+    }
 
+    .pagination {
+        display: inline-block;
+    }
+
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+    }
+
+    .pagination a.active {
+        background-color: #4CAF50;
+        color: white;
+        border: 1px solid #4CAF50;
+    }
+
+    .pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
 
 <!--==================== MAIN ====================-->
 <main class="main">
@@ -149,50 +177,47 @@
                 </article>
             </c:forEach>
         </div>
-        <h2 class="section__title">
-            <nav class="app-pagination">
-                <ul class="pagination justify-content-center">
+        <h2 class="section__title m-3">
 
-                    <c:set var="activepage" value="${pagination.activePage}" />
-                    <c:choose>
-                        <c:when test="${activepage == 1}">
-                            <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
-                        </c:when>
-                        <c:otherwise>
-                            <li class="page-item"><a class="page-link"
-                                                     href="/home?page=${pagination.prePage}#products">&laquo;</a></li>
-                        </c:otherwise>
-                    </c:choose>
-                    <c:forEach var="Total" begin="1" end="${totalend+1}">
-                        <c:set var="activepage" value="${activepage}" />
-                        <c:set var="Page" value="${Total}" />
-                        <c:choose>
-                            <c:when test="${activepage == Page}">
-                                <li class="page-item active" aria-current="page"><span
-                                        class="page-link">${Total}</span></li>
-                            </c:when>
-                            <c:otherwise>
-                                <li class="page-item"><a class="page-link"
-                                                         href="/home?page=${Total}#products">${Total}</a></li>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
-                    <c:set var="activepage" value="${pagination.activePage}" />
-                    <c:set var="Page" value="${totalend}" />
-                    <c:choose>
-                        <c:when test="${activepage == Page+1}">
-                            <li class="page-item disabled"><a class="page-link" href="#">&raquo;</a></li>
-                        </c:when>
-                        <c:otherwise>
-                            <li class="page-item"><a class="page-link"
-                                                     href="/home?page=${pagination.nextPage}#products">&raquo;</a></li>
-                        </c:otherwise>
-                    </c:choose>
 
-                </ul>
-            </nav>
+
         </h2>
+        <div class="center" style="text-align: center">
+            <div class="pagination">
+                <c:set var="activepage" value="${pagination.activePage}" />
+                <c:choose>
+                    <c:when test="${activepage == 1}">
+                        <a href="#">&laquo;</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="/home?page=${pagination.prePage}#products">&laquo;</a>
+                    </c:otherwise>
+                </c:choose>
+                <c:forEach var="Total" begin="1" end="${totalend+1}">
+                    <c:set var="activepage" value="${activepage}" />
+                    <c:set var="Page" value="${Total}" />
+                    <c:choose>
+                        <c:when test="${activepage == Page}">
+                            <a class="active">${Total}</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/home?page=${Total}#products">${Total}</a>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+                <c:set var="activepage" value="${pagination.activePage}" />
+                <c:set var="Page" value="${totalend}" />
+                <c:choose>
+                    <c:when test="${activepage == Page+1}">
+                        <a href="#">&raquo;</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="/home?page=${pagination.nextPage}#products">&raquo;</a>
+                    </c:otherwise>
+                </c:choose>
+            </div>
 
+        </div>
     </section>
 
     <!--==================== TESTIMONIAL ====================-->
