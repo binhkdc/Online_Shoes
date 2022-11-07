@@ -5,60 +5,7 @@
 <!--==================== HEADER ====================-->
 
 
-<div class="cart" id="cart">
-    <i class='bx bx-x cart__close' id="cart-close"></i>
 
-    <h2 class="cart__title-center">My Cart</h2>
-
-    <div class="cart__container scrollspy-example">
-
-        <c:forEach var="item" items="${CartItem}">
-
-            <form action="/shoppingCart/update" method="post">
-                <input type="hidden" value="${item.magiay}" name="magiay"/>
-                <article class="cart__card">
-                    <div class="cart__box">
-                        <img src="/assets/frontend/img/${hinhanh}" alt="" class="cart__img">
-                    </div>
-
-                    <div class="cart__details">
-                        <h3 class="cart__title">${item.tengiay}</h3>
-                        <span class="cart__price">$${item.gia}</span>
-
-                        <div class="cart__amount">
-                            <div class="cart__amount-content ">
-                                <div class="custom-quantity-input">
-                                    <a href="#" class="quantity-btn quantity-input-down"><i class='bx bx-minus'></i></a>
-                                    <input type="text"  onblur="this.form.submit()"  class="" name="soluong" value="${item.soluong}">
-                                    <a href="#" class="quantity-btn quantity-input-up"><i class='bx bx-plus'></i></a>
-                                </div>
-                            </div>
-                            <a href="/shoppingCart/remove/${item.magiay}"><i
-                                    class='bx bx-trash-alt cart__amount-trash'></i></a>
-
-                        </div>
-                    </div>
-                </article>
-            </form>
-        </c:forEach>
-
-    </div>
-
-    <div class="cart__prices">
-        <span class="cart__prices-item">${Soluong} items</span>
-        <span class="cart__prices-total">$${Gia}</span>
-    </div>
-    <sec:authorize access="isAuthenticated()">
-        <c:set var="userid">
-            <sec:authentication property="principal.id"></sec:authentication>
-        </c:set>
-        <form action="/checkOut" method="post">
-            <input value="${userid}" name="userid">
-            <input type="submit" value="checkOut">
-        </form>
-    </sec:authorize>
-
-</div>
 <!--==================== MAIN ====================-->
 <main class="main">
     <!--==================== HOME ====================-->
@@ -376,20 +323,4 @@
         </div>
     </section>
 </main>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
-    jQuery(function ($) {
-
-        $(".quantity-btn").on("click", function (e) {
-            e.preventDefault();                               // Don't scroll top.
-            var $inp = $(this).closest("div").find("input"),  // Get input
-                isUp = $(this).is(".quantity-input-up"),      // Is up clicked? (Boolean)
-                currVal = parseInt($inp.val(), 10);           // Get curr val
-            $inp.val(Math.max(0, currVal += isUp ? 1 : -1));  // Assign new val
-        });
-
-        // Other DOM ready code here
-
-    });
-</script>
 <%@include file="/WEB-INF/views/layout/foot.jsp" %>

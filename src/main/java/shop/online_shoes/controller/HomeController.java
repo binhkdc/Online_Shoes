@@ -42,17 +42,7 @@ public class HomeController {
     public String home(Model model) {
 
         try {
-            Collection<CartDto> cartDtos = cartService.getCart();
-            if (cartDtos != null) {
-                model.addAttribute("CartItem", cartDtos);
-                model.addAttribute("Gia", cartService.getAmount());
-                model.addAttribute("Soluong", cartService.getCount());
-                model.addAttribute("product", productService.list());
-
-            } else {
-                model.addAttribute("message", "Giỏ hàng trống!!");
-            }
-
+            model.addAttribute("product", productService.list());
 
         } catch (Exception e) {
             e.printStackTrace();

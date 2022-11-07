@@ -24,19 +24,22 @@ public class ShoppingCartController {
     @Autowired
     CartService cartService;
 
-//    @GetMapping("list")
-//    public String List(Model model) {
-//
-//        Collection<CartDto> cartDtos= cartService.getCart();
-//        if(cartDtos==null){
-//            model.addAttribute("message", "loi");
-//        }
-//        model.addAttribute("CartItem", cartDtos);
-//        model.addAttribute("Gia", cartService.getAmount());
-//        model.addAttribute("Soluong",cartService.getCount());
-//
-//        return "/home";
-//    }
+    @GetMapping("list")
+    public String List(Model model) {
+
+        Collection<CartDto> cartDtos = cartService.getCart();
+        if (cartDtos != null) {
+            model.addAttribute("CartItem", cartDtos);
+            model.addAttribute("Gia", cartService.getAmount());
+            model.addAttribute("Soluong", cartService.getCount());
+
+
+        } else {
+            model.addAttribute("message", "Giỏ hàng trống!!");
+        }
+
+        return "/shoppingCarts/list";
+    }
 
     @GetMapping(value = {"add/{id}"})
     public String add(@PathVariable("id") int id, Model model) throws Exception {
@@ -54,19 +57,19 @@ public class ShoppingCartController {
             e.printStackTrace();
         }
 
-        return "redirect:/";
+        return "redirect:/shoppingCart/list";
     }
 
     @GetMapping("remove/{id}")
     public String remove(@PathVariable("id") int id) {
         cartService.remove(id);
-        return "redirect:/";
+        return "redirect:/shoppingCart/list";
     }
 
     @PostMapping("update")
     public String update(@RequestParam("magiay") int magiay, @RequestParam("soluong") int soluong) {
         cartService.update(magiay,soluong);
-        return "redirect:/";
+        return "redirect:/shoppingCart/list";
     }
 
     @GetMapping("clear")
