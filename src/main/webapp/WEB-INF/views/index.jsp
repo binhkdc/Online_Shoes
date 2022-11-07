@@ -59,7 +59,7 @@
 
                                                 const ctx = document.getElementById('myChart');
                                                 const data1 = {
-                                                    label : 'Số Lượng',
+                                                    label : 'Số Lượng đã bán ',
                                                     data : <%out.print(getSoluong);%>,
                                                     backgroundColor : [
                                                         'rgba(255, 99, 132, 0.2)',
