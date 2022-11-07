@@ -48,7 +48,7 @@ public class ProductController {
 
             paginationDto.setActivePage(page);
             paginationDto.setPage(page);
-            paginationDto.setPageSize(5);
+            paginationDto.setPageSize(6);
             paginationDto.setCount(paginationDto.getPageSize() * (page-1));
             paginationDto.setPrePage(paginationDto.getActivePage()-1);
             paginationDto.setNextPage(paginationDto.getActivePage()+1);
@@ -58,11 +58,13 @@ public class ProductController {
             model.addAttribute("totalend",c);
             model.addAttribute("pagination",paginationDto);
             model.addAttribute("list", productService.list(paginationDto));
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         return "/backend/product/list";
     }
+
 
     @GetMapping(value = {"/detail_producer/{id}"})
     public String details_producer(@PathVariable int id, Model model) {

@@ -20,10 +20,10 @@ public class ChartService {
         Statement sqlFile = conn.createStatement();
         try {
 
-            String selectSql = "SELECT COUNT(ct_hoadonxuat.SoLuong) as countsoluong FROM ct_hoadonxuat GROUP by MaHDXuat";
+            String selectSql = "SELECT  soluong FROM ct_hoadonxuat GROUP by magiay";
             ResultSet resultSet = sqlFile.executeQuery(selectSql);
             while (resultSet.next()) {
-                list.add(resultSet.getString("countsoluong"));
+                list.add(resultSet.getString("soluong"));
             }
             resultSet.close();
         } finally {
@@ -38,7 +38,7 @@ public class ChartService {
         Statement sqlFile = conn.createStatement();
         try {
 
-            String selectSql = " SELECT COUNT(ct_hoadonxuat.SoLuong) as countsoluong, sanpham.TenGiay FROM ct_hoadonxuat JOIN sanpham on sanpham.MaGiay=ct_hoadonxuat.MaGiay GROUP by MaHDXuat";
+            String selectSql = "SELECT  sanpham.TenGiay FROM ct_hoadonxuat JOIN sanpham on sanpham.MaGiay=ct_hoadonxuat.MaGiay GROUP by sanpham.MaGiay";
             ResultSet resultSet = sqlFile.executeQuery(selectSql);
             while (resultSet.next()) {
                 list.add(resultSet.getString("sanpham.TenGiay"));

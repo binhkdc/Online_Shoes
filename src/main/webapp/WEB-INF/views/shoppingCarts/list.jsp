@@ -25,17 +25,17 @@
     <title>Nike website</title>
 </head>
 <body>
-<h1>My Cart</h1>
+<sec:authorize access="isAuthenticated()">
+<h1>Giỏ hàng của tôi</h1>
 
 <div class="shopping-cart">
 
     <div class="column-labels">
-        <label class="product-image">Image</label>
-        <label class="product-details">Product</label>
-        <label class="product-price">Price</label>
-        <label class="product-quantity">Quantity</label>
-        <label class="product-removal">Remove</label>
-        <label class="product-line-price">Total</label>
+        <label class="product-image">Hình ảnh</label>
+        <label class="product-details">Sản Phẩm</label>
+        <label class="product-price">Giá</label>
+        <label class="product-quantity">Số Lượng</label>
+        <label class="product-removal">Xóa</label>
     </div>
     <c:forEach var="item" items="${CartItem}">
     <form action="/shoppingCart/update" method="post">
@@ -43,27 +43,24 @@
         <article class="cart__card">
         <div class="product">
             <div class="product-image">
-                <img src="/assets/frontend/img/${hinhanh}" alt="" class="cart__img">
+                <img src="/assets/frontend/img/${item.hinhanh}" alt="" class="cart__img">
             </div>
             <div class="product-details">
                 <div class="product-title">
                     <h3 class="cart__title">${item.tengiay}</h3>
                 </div>
-                <p class="product-description">The best dog . I'm a fan.</p>
+                <p class="product-description">${item.mota}</p>
             </div>
-            <div class="product-price"><span class="cart__price">$${item.gia}</span></div>
+            <div class="product-price"><span class="cart__price">${item.gia}</span></div>
             <div class="product-quantity">
                 <a href="#" class="quantity-btn quantity-input-down"><i class='bx bx-minus'></i></a>
                 <input type="text"  onblur="this.form.submit()"  class="" name="soluong" value="${item.soluong}">
                 <a href="#" class="quantity-btn quantity-input-up"><i class='bx bx-plus'></i></a>
             </div>
             <div class="product-removal">
-                <button class="remove-product">
+                <a href="/shoppingCart/remove/${item.magiay}" class="remove-product">
                     Remove
-                </button>
-            </div>
-            <div class="product-line-price">
-                <span class="cart__prices-total">${Gia}</span>
+                </a>
             </div>
         </div>
         </article>
@@ -71,14 +68,14 @@
     </form>
 
     </c:forEach>
-    <sec:authorize access="isAuthenticated()">
+
 
         <c:set var="userid">
             <sec:authentication property="principal.id"></sec:authentication>
         </c:set>
         <div class="totals">
             <div class="totals-item">
-                <label>Subtotal</label>
+                <label>Tổng Tiền</label>
                 <div class="totals-value" id="cart-subtotal">
                     <span class="cart__prices-total">${Gia}</span>
                 </div>
@@ -88,25 +85,25 @@
 <%--                <label>Shipping</label>--%>
 <%--                <div class="totals-value" id="cart-shipping">15.00</div>--%>
 <%--            </div>--%>
-            <div class="totals-item totals-item-total">
-                <label>Grand Total</label>
-                <div class="totals-value" id="cart-total">
+<%--            <div class="totals-item totals-item-total">--%>
+<%--                <label>Grand Total</label>--%>
+<%--                <div class="totals-value" id="cart-total">--%>
 
-                    <span class="cart__prices-total">${Gia}</span>
-                </div>
-            </div>
+<%--                    <span class="cart__prices-total">${Gia}</span>--%>
+<%--                </div>--%>
+<%--            </div>--%>
         </div>
         <form action="/checkOut" method="post">
             <input type="hidden" value="${userid}" name="userid">
             <button class="checkout">Checkout</button>
-            <button  href="/#products" style="background-color: #6b6;color: white;border-radius: 3px;border: 0;margin-top: 20px;
-    padding: 6px 25px;" class="btn">Back</button>
+            <a href="/home#products" style="background-color: #6b6;color: white;border-radius: 3px;border: 0;margin-top: 20px;
+    padding: 6px 25px;" class="btn">Back</a>
         </form>
 
-    </sec:authorize>
+
 
 </div>
-
+</sec:authorize>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

@@ -56,7 +56,7 @@
 
 
             <div class="nav__shop" id="cart-shop">
-                <i class='bx bx-shopping-bag' ></i>
+                <a href="/shoppingCart/list"><i class='bx bx-shopping-bag' ></i></a>
             </div>
 <%--            <div class="nav__signup">--%>
 <%--                <a href="#" class="nav__link " id="nav-signup">Sign Up</a>--%>

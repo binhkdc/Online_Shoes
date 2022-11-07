@@ -33,14 +33,14 @@
                     Latest arrival of the new imported shoes of the NIKE series,
                     with a modern and resistant design.
                 </p>
-                <span class="home__price">$1245</span>
+                <span class="home__price">$1235</span>
 
                 <div class="home__btns">
                     <a href="#" class="button button--gray button--small">
                         Discover
                     </a>
+                    <a href="/shoppingCart/add/19" class="button home__button">ADD TO CART</a>
 
-                    <button class="button home__button">ADD TO CART</button>
                 </div>
             </div>
         </div>
@@ -288,57 +288,20 @@
         <div class="new__container">
             <div class="swiper new-swiper">
                 <div class="swiper-wrapper">
-                    <article class="new__card swiper-slide">
-                        <span class="new__tag">New</span>
+                    <c:forEach var="product" items="${listNew}">
+                        <article class="new__card swiper-slide">
+                            <span class="new__tag">New</span>
 
-                        <img src="/assets/frontend/img/new01.png" alt="" class="new__img">
+                            <img src="/assets/frontend/img/${product.hinhanh}" alt="" class="new__img">
 
-                        <div class="new__data">
-                            <h3 class="new__title">𝐀𝐢𝐫 𝐉𝐨𝐫𝐝𝐚𝐧 𝟏 𝐑𝐞𝐭𝐫𝐨 𝐋𝐨𝐰 𝐎𝐆 "𝐁𝐥𝐞𝐚𝐜𝐡𝐞𝐝 𝐂𝐨𝐫𝐚𝐥"</h3>
-                            <span class="new__price">$980</span>
-                        </div>
+                            <div class="new__data">
+                                <h3 class="new__title">${product.tengiay}</h3>
+                                <span class="new__price">$${product.gia}</span>
+                            </div>
 
-                        <button class="button new__button">ADD TO CART</button>
-                    </article>
-
-                    <article class="new__card swiper-slide">
-                        <span class="new__tag">New</span>
-
-                        <img src="/assets/frontend/img/new02.png" alt="" class="new__img">
-
-                        <div class="new__data">
-                            <h3 class="new__title">𝐁𝐥𝐚𝐳𝐞𝐫 𝐌𝐢𝐝 ‘𝟕𝟕 𝐉𝐮𝐦𝐛𝐨</h3>
-                            <span class="new__price">$1150</span>
-                        </div>
-
-                        <button class="button new__button">ADD TO CART</button>
-                    </article>
-
-                    <article class="new__card swiper-slide">
-                        <span class="new__tag">New</span>
-
-                        <img src="/assets/frontend/img/neww03.png" alt="" class="new__img">
-
-                        <div class="new__data">
-                            <h3 class="new__title">𝗔𝗶𝗿 𝗝𝗼𝗿𝗱𝗮𝗻 𝟭 𝗟𝗼𝘄 𝗥𝗼𝘀𝗲 𝗚𝗼𝗹𝗱</h3>
-                            <span class="new__price">$750</span>
-                        </div>
-
-                        <button class="button new__button">ADD TO CART</button>
-                    </article>
-
-                    <article class="new__card swiper-slide">
-                        <span class="new__tag">New</span>
-
-                        <img src="/assets/frontend/img/new04.png" alt="" class="new__img">
-
-                        <div class="new__data">
-                            <h3 class="new__title">𝐀𝐢𝐫 𝐉𝐨𝐫𝐝𝐚𝐧 𝟑 𝐑𝐞𝐭𝐫𝐨 "𝐃𝐚𝐫𝐤 𝐌𝐨𝐜𝐡𝐚"</h3>
-                            <span class="new__price">$1590</span>
-                        </div>
-
-                        <button class="button new__button">ADD TO CART</button>
-                    </article>
+                            <a href="/shoppingCart/add/${product.magiay}" class="button new__button">ADD TO CART</a>
+                        </article>
+                    </c:forEach>
                 </div>
             </div>
         </div>

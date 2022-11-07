@@ -46,6 +46,36 @@ public class ProductService {
         }
         return list;
     }
+    public List<ProductDto> listNew () throws Exception {
+         List<ProductDto> list = new ArrayList<>();
+        Connection conn = DbUtils.getCollection();
+        Statement sqlFile = conn.createStatement();
+        try {
+            String selectSql = "SELECT * FROM `sanpham` GROUP by sanpham.MaGiay DESC LIMIT 4";
+            ResultSet resultSet = sqlFile.executeQuery(selectSql);
+
+            while (resultSet.next()) {
+                ProductDto productDto= new ProductDto();
+                productDto.setMagiay(resultSet.getInt("MaGiay"));
+                productDto.setTengiay(resultSet.getString("TenGiay"));
+                productDto.setMansx(resultSet.getLong("MaNSX"));
+                productDto.setSoluong(resultSet.getInt("SoLuong"));
+                productDto.setSize(resultSet.getString("Size"));
+                productDto.setMausac(resultSet.getString("MauSac"));
+                productDto.setGia(resultSet.getFloat("Gia"));
+                productDto.setHinhanh(resultSet.getString("HinhAnh"));
+                productDto.setMota(resultSet.getString("MoTa"));
+                productDto.setMaloaigiay(resultSet.getLong("MaLoaiGiay"));
+                list .add(productDto);
+
+            }
+            resultSet.close();
+        } finally {
+            sqlFile.close();
+            conn.close();
+        }
+        return list;
+    }
 
     public ProductDto findById (int magiay) throws Exception {
         ProductDto productDto= new ProductDto();

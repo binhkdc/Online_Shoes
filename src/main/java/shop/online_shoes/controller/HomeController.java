@@ -41,7 +41,7 @@ public class HomeController {
         try {
             paginationDto.setActivePage(page);
             paginationDto.setPage(page);
-            paginationDto.setPageSize(5);
+            paginationDto.setPageSize(6);
             paginationDto.setCount(paginationDto.getPageSize() * (page-1));
             paginationDto.setPrePage(paginationDto.getActivePage()-1);
             paginationDto.setNextPage(paginationDto.getActivePage()+1);
@@ -53,11 +53,11 @@ public class HomeController {
             model.addAttribute("list", productService.list(paginationDto));
             paginationDto.setPage(page);
             model.addAttribute("product", productService.list(paginationDto));
-
+            model.addAttribute("listNew", productService.listNew());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "home";
+        return "/home";
     }
 
     @PostMapping("checkOut")
@@ -80,6 +80,9 @@ public class HomeController {
                         if (productDtoList != null) {
                             productService.findById(value.getMagiay());
                             productDtoList.setUpdateSoluong(productDtoList.getSoluong()-value.getSoluong());
+                            if(productDtoList.getSoluong()<0){
+                                productDtoList.setSoluong(0);
+                            }
                             productService.updateSoluong(productDtoList);
                         }
                         detail_export_invoiceService.save(detail_export_invoiceDto);
@@ -88,11 +91,12 @@ public class HomeController {
                         throw new RuntimeException(e);
                     }
                 });
-
+            model.addAttribute("message","Mua hàng thành công");
+            cartDtos.clear();
         } catch (Exception e) {
-            e.printStackTrace();
+           model.addAttribute("message","Mua hàng không thành công");
         }
-        return "redirect:/";
+        return "redirect:/shoppingCart/list";
     }
 
 }
