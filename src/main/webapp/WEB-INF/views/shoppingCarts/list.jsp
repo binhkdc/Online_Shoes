@@ -19,66 +19,176 @@
     <link rel="stylesheet" href="/assets/frontend/css/swiper-bundle.min.css">
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="/assets/frontend/css/styles.css">
+    <link rel="stylesheet" href="/assets/frontend/css/styleCart.css">
+
 
     <title>Nike website</title>
 </head>
+<body>
+<h1>My Cart</h1>
 
-    <i class='bx bx-x cart__close' id="cart-close"></i>
+<div class="shopping-cart">
 
-    <h2 class="cart__title-center">My Cart</h2>
-
-    <div class="cart__container scrollspy-example">
-
-        <c:forEach var="item" items="${CartItem}">
-
-            <form action="/shoppingCart/update" method="post">
-                <input type="hidden" value="${item.magiay}" name="magiay"/>
-                <article class="cart__card">
-                    <div class="cart__box">
-                        <img src="/assets/frontend/img/${hinhanh}" alt="" class="cart__img">
-                    </div>
-
-                    <div class="cart__details">
-                        <h3 class="cart__title">${item.tengiay}</h3>
-                        <span class="cart__price">$${item.gia}</span>
-
-                        <div class="cart__amount">
-                            <div class="cart__amount-content ">
-                                <div class="custom-quantity-input">
-                                    <a href="#" class="quantity-btn quantity-input-down"><i class='bx bx-minus'></i></a>
-                                    <input type="text"  onblur="this.form.submit()"  class="" name="soluong" value="${item.soluong}">
-                                    <a href="#" class="quantity-btn quantity-input-up"><i class='bx bx-plus'></i></a>
-                                </div>
-                            </div>
-                            <a href="/shoppingCart/remove/${item.magiay}"><i
-                                    class='bx bx-trash-alt cart__amount-trash'></i></a>
-
-                        </div>
-                    </div>
-                </article>
-            </form>
-        </c:forEach>
-
+    <div class="column-labels">
+        <label class="product-image">Image</label>
+        <label class="product-details">Product</label>
+        <label class="product-price">Price</label>
+        <label class="product-quantity">Quantity</label>
+        <label class="product-removal">Remove</label>
+        <label class="product-line-price">Total</label>
     </div>
+    <c:forEach var="item" items="${CartItem}">
+    <form action="/shoppingCart/update" method="post">
+        <input type="hidden" value="${item.magiay}" name="magiay"/>
+        <article class="cart__card">
+        <div class="product">
+            <div class="product-image">
+                <img src="/assets/frontend/img/${hinhanh}" alt="" class="cart__img">
+            </div>
+            <div class="product-details">
+                <div class="product-title">
+                    <h3 class="cart__title">${item.tengiay}</h3>
+                </div>
+                <p class="product-description">The best dog . I'm a fan.</p>
+            </div>
+            <div class="product-price"><span class="cart__price">$${item.gia}</span></div>
+            <div class="product-quantity">
+                <a href="#" class="quantity-btn quantity-input-down"><i class='bx bx-minus'></i></a>
+                <input type="text"  onblur="this.form.submit()"  class="" name="soluong" value="${item.soluong}">
+                <a href="#" class="quantity-btn quantity-input-up"><i class='bx bx-plus'></i></a>
+            </div>
+            <div class="product-removal">
+                <button class="remove-product">
+                    Remove
+                </button>
+            </div>
+            <div class="product-line-price">
+                <span class="cart__prices-total">${Gia}</span>
+            </div>
+        </div>
+        </article>
 
-    <div class="cart__prices">
-        <span class="cart__prices-item">${Soluong} items</span>
-        <span class="cart__prices-total">$${Gia}</span>
-    </div>
+    </form>
+
+    </c:forEach>
     <sec:authorize access="isAuthenticated()">
+
         <c:set var="userid">
             <sec:authentication property="principal.id"></sec:authentication>
         </c:set>
+        <div class="totals">
+            <div class="totals-item">
+                <label>Subtotal</label>
+                <div class="totals-value" id="cart-subtotal">
+                    <span class="cart__prices-total">${Gia}</span>
+                </div>
+            </div>
+
+<%--            <div class="totals-item">--%>
+<%--                <label>Shipping</label>--%>
+<%--                <div class="totals-value" id="cart-shipping">15.00</div>--%>
+<%--            </div>--%>
+            <div class="totals-item totals-item-total">
+                <label>Grand Total</label>
+                <div class="totals-value" id="cart-total">
+
+                    <span class="cart__prices-total">${Gia}</span>
+                </div>
+            </div>
+        </div>
         <form action="/checkOut" method="post">
             <input type="hidden" value="${userid}" name="userid">
-            <input type="submit" value="checkOut">
+            <button class="checkout">Checkout</button>
+            <button  href="/#products" style="background-color: #6b6;color: white;border-radius: 3px;border: 0;margin-top: 20px;
+    padding: 6px 25px;" class="btn">Back</button>
         </form>
+
     </sec:authorize>
 
-<a href="/#products">home</a>
+</div>
+
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
+    /* Set rates + misc */
+    var taxRate = 0.05;
+    var shippingRate = 15.00;
+    var fadeTime = 300;
+
+
+    /* Assign actions */
+    $('.product-quantity input').change( function() {
+        updateQuantity(this);
+    });
+
+    $('.product-removal button').click( function() {
+        removeItem(this);
+    });
+
+
+    /* Recalculate cart */
+    function recalculateCart()
+    {
+        var subtotal = 0;
+
+        /* Sum up row totals */
+        $('.product').each(function () {
+            subtotal += parseFloat($(this).children('.product-line-price').text());
+        });
+
+        /* Calculate totals */
+        var tax = subtotal * taxRate;
+        var shipping = (subtotal > 0 ? shippingRate : 0);
+        var total = subtotal + tax + shipping;
+
+        /* Update totals display */
+        $('.totals-value').fadeOut(fadeTime, function() {
+            $('#cart-subtotal').html(subtotal.toFixed(2));
+            $('#cart-tax').html(tax.toFixed(2));
+            $('#cart-shipping').html(shipping.toFixed(2));
+            $('#cart-total').html(total.toFixed(2));
+            if(total == 0){
+                $('.checkout').fadeOut(fadeTime);
+            }else{
+                $('.checkout').fadeIn(fadeTime);
+            }
+            $('.totals-value').fadeIn(fadeTime);
+        });
+    }
+
+
+    /* Update quantity */
+    function updateQuantity(quantityInput)
+    {
+        /* Calculate line price */
+        var productRow = $(quantityInput).parent().parent();
+        var price = parseFloat(productRow.children('.product-price').text());
+        var quantity = $(quantityInput).val();
+        var linePrice = price * quantity;
+
+        /* Update line price display and recalc cart totals */
+        productRow.children('.product-line-price').each(function () {
+            $(this).fadeOut(fadeTime, function() {
+                $(this).text(linePrice.toFixed(2));
+                recalculateCart();
+                $(this).fadeIn(fadeTime);
+            });
+        });
+    }
+
+
+    /* Remove item from cart */
+    function removeItem(removeButton)
+    {
+        /* Remove row from DOM and recalc cart total */
+        var productRow = $(removeButton).parent().parent();
+        productRow.slideUp(fadeTime, function() {
+            productRow.remove();
+            recalculateCart();
+        });
+    }
+    // Tang giam
     jQuery(function ($) {
 
         $(".quantity-btn").on("click", function (e) {
@@ -93,86 +203,7 @@
 
     });
 </script>
-<footer class="footer section">
-    <div class="footer__container container grid">
-        <div class="footer__content">
-            <h3 class="footer__title">Our information</h3>
 
-            <ul class="footer__list">
-                <li>Mai dich- Cau Giay -Ha Noi </li>
-                <li>La Huong-Le Dang Binh   </li>
-                <li>123-456-789</li>
-            </ul>
-        </div>
-        <div class="footer__content">
-            <h3 class="footer__title">About Us</h3>
-
-            <ul class="footer__links">
-                <li>
-                    <a href="#" class="footer__link">Support Center</a>
-                </li>
-                <li>
-                    <a href="#" class="footer__link">Customer Support</a>
-                </li>
-                <li>
-                    <a href="#" class="footer__link">About Us</a>
-                </li>
-                <li>
-                    <a href="#" class="footer__link">Copy Right</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="footer__content">
-            <h3 class="footer__title">Product</h3>
-
-            <ul class="footer__links">
-                <li>
-                    <a href="#" class="footer__link">Road bikes</a>
-                </li>
-                <li>
-                    <a href="#" class="footer__link">Mountain bikes</a>
-                </li>
-                <li>
-                    <a href="#" class="footer__link">Electric</a>
-                </li>
-                <li>
-                    <a href="#" class="footer__link">Accesories</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="footer__content">
-            <h3 class="footer__title">Social</h3>
-
-            <ul class="footer__social">
-                <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
-                    <i class='bx bxl-facebook'></i>
-                </a>
-
-                <a href="https://twitter.com/" target="_blank" class="footer__social-link">
-                    <i class='bx bxl-twitter' ></i>
-                </a>
-
-                <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
-                    <i class='bx bxl-instagram' ></i>
-                </a>
-            </ul>
-        </div>
-    </div>
-
-    <span class="footer__copy">&#169;  All rigths reserved</span>
-</footer>
-
-<!--=============== SCROLL UP ===============-->
-<a href="#" class="scrollup" id="scroll-up">
-    <i class='bx bx-up-arrow-alt scrollup__icon' ></i>
-</a>
-
-<!--=============== SWIPER JS ===============-->
-<script src="/assets/frontend/js/swiper-bundle.min.js"></script>
-
-<!--=============== MAIN JS ===============-->
-<script src="/assets/frontend/js/main.js"></script>
 </body>
+
 </html>
