@@ -11,4 +11,5 @@ public class Export_invoiceDto {
     String ngayxuat;
     int userid;
     float tongtien;
+    String fullname;
 }

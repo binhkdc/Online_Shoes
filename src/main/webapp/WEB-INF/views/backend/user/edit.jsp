@@ -19,10 +19,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="/backend/product/list">User</a>
+                                    <a href="/backend/user/list">Người dùng</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    edit
+                                    sửa người dùng
                                 </li>
                             </ol>
                         </nav>
@@ -48,7 +48,7 @@
                                         <input type="text" placeholder="magiay" value="${user.ID}" class="form-control"
                                                id="id"
                                                name="id" readonly required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Mã người dùng</div>
                                     </div>
                                     <div class="col-md-12">
@@ -56,7 +56,7 @@
                                         <input type="text" placeholder="fullname" value="${user.FULL_NAME}"
                                                class="form-control"
                                                id="fullname" name="fullName" required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Tên đầy đủ</div>
                                     </div>
 
@@ -65,20 +65,20 @@
                                         <label for="address" class="form-label">Địa chỉ</label>
                                         <input type="text" placeholder="address" class="form-control"
                                                value="${user.ADDRESS}" id="address" name="address" required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Số lượng</div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mb-3">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="text" placeholder="email" class="form-control"
                                                value="${user.EMAIL}" id="email" name="email" readonly required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Kích cỡ</div>
                                     </div>
                                     <label for="role">Đặc Quyền</label>
 
 
-                                    <select class="form-select" aria-label="Default select example" id="role"
+                                    <select class="form-select mb-3" aria-label="Default select example" id="role"
                                             name="role" required>
                                         <option value="ADMIN"> Admin</option>
                                         <option value="USER" selected> User</option>
@@ -106,7 +106,7 @@
                                         </c:choose>
                                     </select>
 
-                                    <button type="submit" class="mt-3 btn btn-primary">Submit</button>
+                                    <button type="submit" class="mt-3 btn btn-primary">Sửa</button>
                                 </div>
                             </form>
 

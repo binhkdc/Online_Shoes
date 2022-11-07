@@ -6,7 +6,10 @@ import shop.online_shoes.dto.Export_invoiceDto;
 import shop.online_shoes.utils.DbUtils;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class Detail_export_invoiceService {
@@ -24,5 +27,31 @@ public class Detail_export_invoiceService {
             sqlFile.close();
             con.close();
         }
+    }
+
+    public List<Detail_export_invoiceDto> details (int id) throws Exception {
+        List<Detail_export_invoiceDto> list = new ArrayList<>();
+        Connection conn = DbUtils.getCollection();
+        Statement sqlFile = conn.createStatement();
+        try {
+            String selectSql = "SELECT ct_hoadonxuat.id , ct_hoadonxuat.MaHDXuat, sanpham.TenGiay, ct_hoadonxuat.SoLuong, ct_hoadonxuat.Gia FROM `ct_hoadonxuat` LEFT JOIN sanpham on sanpham.MaGiay= ct_hoadonxuat.MaGiay WHERE MaHDXuat ="+id+"";
+            ResultSet resultSet = sqlFile.executeQuery(selectSql);
+
+            while (resultSet.next()) {
+                Detail_export_invoiceDto detail_export_invoiceDto= new Detail_export_invoiceDto();
+                detail_export_invoiceDto.setMahdxuat(resultSet.getInt("MaHDXuat"));
+                detail_export_invoiceDto.setTengiay(resultSet.getString("sanpham.TenGiay"));
+                detail_export_invoiceDto.setSoluong(resultSet.getInt("SoLuong"));
+                detail_export_invoiceDto.setGia(resultSet.getInt("Gia"));
+
+                list .add(detail_export_invoiceDto);
+
+            }
+            resultSet.close();
+        } finally {
+            sqlFile.close();
+            conn.close();
+        }
+        return list;
     }
 }

@@ -17,10 +17,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="#0">Category</a>
+                                    <a href="#0">Loại Giày</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    List
+                                    Danh sách
                                 </li>
                             </ol>
                         </nav>
@@ -61,7 +61,7 @@
                                                 <a class="btn-lg text-success"
                                                             href="/backend/category/edit/${category.maloaigiay}"><i class="lni lni-pencil"></i></a> <a
                                                 class="btn-lg text-danger"
-                                                href="/backend/category/delete/${category.maloaigiay}"><i class="lni lni-bitbucket"></i></a> <a
+                                                href="/backend/category/delete/${category.maloaigiay}"><i class="lni lni-trash-can"></i></a> <a
                                                 class="btn-lg text-primary"
                                                 href="/backend/category/details/${category.maloaigiay}"><i class="lni lni-eye"></i></a>
                                             </div>

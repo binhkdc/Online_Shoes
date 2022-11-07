@@ -17,10 +17,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="/backend/category/list">Category</a>
+                                    <a href="/backend/category/list">Loại Giày</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Edit
+                                    Sửa loại giày
                                 </li>
                             </ol>
                         </nav>
@@ -44,22 +44,23 @@
                                         <label for="maloaigiay" class="form-label">Mã Loại Giày</label>
                                         <input type="text" placeholder="maloaigiay" value="${category.maloaigiay}" class="form-control" id="maloaigiay"
                                                name="maloaigiay" readonly required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Mã Loại Giày</div>
                                     </div>
                                     <div class="col-md-12">
                                         <label for="loaigiay" class="form-label">Loại Giày</label>
                                         <input type="text" placeholder="tengiay" value="${category.loaigiay}" class="form-control"
                                                id="loaigiay" name="loaigiay" required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Loại Giày</div>
                                     </div>
 
-                                    <button type="submit" class="mt-3 btn btn-primary">Submit</button>
+                                    <button type="submit" class="mt-3 btn btn-success">Sửa loại giày</button>
                                 </div>
                             </form>
 
                         </c:forEach>
+                        <a class="form-label text-black" onclick="history.back()"><--- Go Back</a>
                     </div>
                     <!-- end card -->
                 </div>

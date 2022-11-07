@@ -17,7 +17,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="/backend/product/list">Supplier</a>
+                                    <a href="/backend/supplier/list">Supplier</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
                                     Create

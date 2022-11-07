@@ -19,10 +19,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="/backend/user/list">User</a>
+                                    <a href="#">Người dùng</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    List
+                                    Danh sách
                                 </li>
                             </ol>
                         </nav>

@@ -78,19 +78,22 @@
                 </a>
                 <ul id="ddmenu_4" class="collapse dropdown-nav">
                     <li>
-                        <a href="/backend/category/list"> Category</a>
+                        <a href="/backend/category/list"> Loại Giày</a>
                     </li>
                     <li>
-                        <a href="/backend/producer/list"> Producer </a>
+                        <a href="/backend/producer/list"> Nhà Sản Xuất </a>
                     </li>
                     <li>
-                        <a href="/backend/product/list"> Product </a>
+                        <a href="/backend/product/list"> Sản Phẩm </a>
                     </li>
                     <li>
-                        <a href="/backend/supplier/list"> Supplier </a>
+                        <a href="/backend/supplier/list"> Nhà Cung Cấp </a>
                     </li>
                     <li>
-                        <a href="/backend/user/list"> User </a>
+                        <a href="/backend/user/list"> Người Dùng </a>
+                    </li>
+                    <li>
+                        <a href="/backend/export_invoice/list"> Hóa Đơn Xuất</a>
                     </li>
                 </ul>
             </li>

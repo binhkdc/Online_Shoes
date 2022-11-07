@@ -8,7 +8,7 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Chi tiết loại sản phẩm</h2>
+                        <h2>Chi tiết loại giày</h2>
                     </div>
                 </div>
                 <!-- end col -->
@@ -17,10 +17,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="/backend/category/list">Category</a>
+                                    <a href="/backend/category/list">Loại giày</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Details
+                                    Chi tiết
                                 </li>
                             </ol>
                         </nav>
@@ -38,28 +38,29 @@
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
                         <c:forEach var="category" items="${category}">
-                            <form method="post" class="row g-3 was-validated d-flex justify-content-center" action="/backend/category/update">
+                            <form method="post" class="row g-3 was-validated d-flex justify-content-center">
                                 <div class="col-sm-12 p-3 ">
                                     <div class="col-md-12">
                                         <label for="maloaigiay" class="form-label">Mã Loại Giày</label>
                                         <input type="text" placeholder="maloaigiay" value="${category.maloaigiay}" class="form-control" id="maloaigiay"
                                                name="maloaigiay" readonly required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Mã Loại Giày</div>
                                     </div>
                                     <div class="col-md-12">
                                         <label for="loaigiay" class="form-label">Loại Giày</label>
                                         <input type="text" placeholder="tengiay" value="${category.loaigiay}" class="form-control"
-                                               id="loaigiay" name="loaigiay" required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                               id="loaigiay" name="loaigiay" required readonly>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Loại Giày</div>
                                     </div>
 
-                                    <button type="submit" class="mt-3 btn btn-primary">Submit</button>
+                                    <a href="/backend/category/edit/${category.maloaigiay}" class="mt-3 btn btn-primary">Edit</a>
                                 </div>
                             </form>
 
                         </c:forEach>
+                        <a class="form-label text-black" onclick="history.back()"><--- Quay lại</a>
                     </div>
                     <!-- end card -->
                 </div>

@@ -17,10 +17,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="#0">Producer</a>
+                                    <a href="#0">Nhà sản xuất</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    List
+                                    Danh sách
                                 </li>
                             </ol>
                         </nav>
@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-10"></h6>
+                        <a class="" href="/backend/producer/create"><h6 class="mb-10">Thêm nhà sản xuất</h6></a>
                         <p class="text-sm text-danger mb-20">
                             ${message}
                         </p>
@@ -62,14 +62,16 @@
                                         <td><p>${producer.diachi}</p></td>
                                         <td><p>${producer.email}</p></td>
                                         <td><p>${producer.sdt}</p></td>
-                                        <td class="cell"><a class="btn-sm app-btn-secondary"
-                                                            href="/backend/producer/edit/${producer.mnsx}">Edit</a> <a
-                                                class="btn-sm app-btn-secondary"
-                                                href="/backend/producer/delete/${producer.mnsx}">Delete</a> <a
-                                                class="btn-sm app-btn-secondary"
-                                                href="/backend/producer/details/${producer.mnsx}">View</a></td>
+                                        <td class="min-width"><a class="text-success btn-lg"
+                                                                 href="/backend/producer/edit/${producer.mnsx}"><i class="lni lni-pencil"></i></a> <a
+                                                class="text-danger btn-lg"
+                                                href="/backend/producer/delete/${producer.mnsx}"><i class="lni lni-trash-can"></i></a> <a
+                                                class="text-primary btn-lg"
+                                                href="/backend/producer/details/${producer.mnsx}"><i class="lni lni-eye"></i></a></td>
+                                    </tr>
                                     </tr>
                                 </c:forEach>
+
                                 </tbody>
                             </table>
                             <!-- end table -->

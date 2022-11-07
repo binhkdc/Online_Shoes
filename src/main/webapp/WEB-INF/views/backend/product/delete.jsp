@@ -19,10 +19,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="/backend/product/list">Product</a>
+                                    <a href="/backend/product/list">Sản Phẩm</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    delete
+                                    Xóa sản phẩm
                                 </li>
                             </ol>
                         </nav>
@@ -39,6 +39,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
+                        <a class="form-label text-black" onclick="history.back()"><--- Quay lại</a>
                         <c:forEach var="product" items="${product}">
                             <form method="post" class="row g-3 was-validated d-flex justify-content-center"
                                   action="/backend/product/deleteProduct">
@@ -48,21 +49,21 @@
                                         <input type="text" placeholder="magiay" value="${product.magiay}"
                                                class="form-control" id="magiay"
                                                name="magiay" readonly required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Tên Giày</div>
                                     </div>
                                     <div class="col-md-12">
                                         <label for="tengiay" class="form-label">Tên Giày</label>
                                         <input type="text" placeholder="tengiay" value="${product.tengiay}"
                                                class="form-control"
-                                               id="tengiay" name="tengiay" required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                               id="tengiay" name="tengiay" readonly required>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Tên Giày</div>
                                     </div>
                                     <label for="mansx">Nhà Sản Xuất</label>
                                     <select class="form-select" aria-label="Default select example" id="mansx"
-                                            name="mansx" required>
-                                        <option>chọn để mở menu mã nhà sản xuất</option>
+                                            name="mansx" required readonly="true">
+
 
                                         <c:set var="mansx" value="${product.mansx}"/>
 
@@ -74,7 +75,7 @@
                                                             selected>${producer.tennsx}</option>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <option value="${producer.mansx} ">${producer.tennsx}</option>
+<%--                                                    <option value="${producer.mansx} ">${producer.tennsx}</option>--%>
                                                 </c:otherwise>
                                             </c:choose>
                                         </c:forEach>
@@ -84,49 +85,49 @@
                                     <div class="col-md-12">
                                         <label for="soluong" class="form-label">Số lượng</label>
                                         <input type="text" placeholder="soluong" class="form-control"
-                                               value="${product.soluong}" id="soluong" name="soluong" required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                               value="${product.soluong}" readonly id="soluong" name="soluong" required>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Số lượng</div>
                                     </div>
                                     <div class="col-md-12">
                                         <label for="size" class="form-label">Kích cỡ</label>
                                         <input type="text" placeholder="size" class="form-control"
-                                               value="${product.size}" id="size" name="size" required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                               value="${product.size}" id="size" readonly name="size" required>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Kích cỡ</div>
                                     </div>
                                     <div class="col-md-12">
                                         <label for="mausac" class="form-label">Màu sắc</label>
                                         <input type="text" placeholder="mausac" class="form-control"
-                                               value="${product.mausac}" id="mausac" name="mausac" required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                               value="${product.mausac}" id="mausac" readonly name="mausac" required>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Màu sắc</div>
                                     </div>
                                     <div class="col-md-12">
                                         <label for="gia" class="form-label">Giá</label>
                                         <input type="number" placeholder="gia" class="form-control"
-                                               value="${product.gia}" id="gia" name="gia" required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                               value="${product.gia}" id="gia" name="gia" readonly required>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Giá</div>
                                     </div>
                                     <div class="col-md-12">
                                         <label for="hinhanh" class="form-label">Hình ảnh</label>
                                         <input type="text" placeholder="hinhanh" class="form-control"
-                                               value="${product.hinhanh}" id="hinhanh" name="hinhanh" required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                               value="${product.hinhanh}" id="hinhanh" readonly name="hinhanh" required>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Hình ảnh</div>
                                     </div>
                                     <div class="col-md-12">
                                         <label for="mota" class="form-label">Mô tả</label>
                                         <input type="text" placeholder="mota" class="form-control"
-                                               value="${product.mota}" id="mota" name="mota" required>
-                                        <div class="valid-feedback">Vô cùng chính xác.</div>
+                                               value="${product.mota}" id="mota" readonly name="mota" required>
+                                        <div class="valid-feedback">&#160;</div>
                                         <div class="invalid-feedback">Vui lòng nhập vào trường Mô tả</div>
                                     </div>
                                     <label for="maloaigiay">Loại Giày</label>
-                                    <select class="form-select" aria-label="Default select example" id="maloaigiay"
-                                            name="maloaigiay" required>
-                                        <option>chọn để mở menu mã nhà sản xuất</option>
+                                    <select class="form-select mb-3" aria-label="Default select example" id="maloaigiay"
+                                            name="maloaigiay" required readonly="true">
+
                                         <c:set var="maloaigiay" value="${product.maloaigiay}"/>
 
                                         <c:forEach var="category" items="${category}">
@@ -137,17 +138,18 @@
                                                             selected>${category.loaigiay}</option>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <option value="${category.maloaigiay}">${category.loaigiay}</option>
+<%--                                                    <option value="${category.maloaigiay}">${category.loaigiay}</option>--%>
                                                 </c:otherwise>
                                             </c:choose>
                                         </c:forEach>
                                     </select>
 
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-danger">Xóa sản phẩm</button>
                                 </div>
                             </form>
 
                         </c:forEach>
+
                     </div>
                     <!-- end card -->
                 </div>

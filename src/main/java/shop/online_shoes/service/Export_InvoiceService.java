@@ -2,6 +2,7 @@ package shop.online_shoes.service;
 
 import org.springframework.stereotype.Service;
 import shop.online_shoes.dto.Export_invoiceDto;
+import shop.online_shoes.dto.ProductDto;
 import shop.online_shoes.utils.DbUtils;
 
 import java.sql.Connection;
@@ -12,6 +13,31 @@ import java.util.List;
 
 @Service
 public class Export_InvoiceService {
+    public List<Export_invoiceDto> list () throws Exception {
+        List<Export_invoiceDto> list = new ArrayList<>();
+        Connection conn = DbUtils.getCollection();
+        Statement sqlFile = conn.createStatement();
+        try {
+            String selectSql = "SELECT `MaHDXuat`, `NgayXuat`, user.FULL_NAME , `TongTien` FROM `hoadonxuat` JOIN user on user.ID=hoadonxuat.UserID;";
+            ResultSet resultSet = sqlFile.executeQuery(selectSql);
+
+            while (resultSet.next()) {
+                Export_invoiceDto export_invoiceDto= new Export_invoiceDto();
+                export_invoiceDto.setMahdxuat(resultSet.getInt("MaHDXuat"));
+                export_invoiceDto.setNgayxuat(resultSet.getString("NgayXuat"));
+                export_invoiceDto.setFullname(resultSet.getString("user.FULL_NAME"));
+                export_invoiceDto.setTongtien(resultSet.getInt("TongTien"));
+
+                list .add(export_invoiceDto);
+
+            }
+            resultSet.close();
+        } finally {
+            sqlFile.close();
+            conn.close();
+        }
+        return list;
+    }
     public void save(Export_invoiceDto export_invoiceDto) throws Exception {
         Connection con = DbUtils.getCollection();
         Statement sqlFile = con.createStatement();

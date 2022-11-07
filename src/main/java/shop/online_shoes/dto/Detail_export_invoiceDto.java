@@ -11,4 +11,6 @@ public class Detail_export_invoiceDto {
     int magiay;
     int soluong;
     float gia;
+
+    String tengiay;
 }

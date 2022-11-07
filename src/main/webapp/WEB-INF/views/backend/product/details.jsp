@@ -9,7 +9,7 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="title mb-30">
-                        <h2>Chi tiêt sản phẩm</h2>
+                        <h2>Chi tiết sản phẩm</h2>
                     </div>
                 </div>
                 <!-- end col -->
@@ -18,10 +18,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="/backend/product/list">Product</a>
+                                    <a href="/backend/product/list">Sản Phẩm</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    details
+                                    Chi tiết
                                 </li>
                             </ol>
                         </nav>
@@ -38,6 +38,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
+                        <a class="form-label text-black" onclick="history.back()"><--- Quay lại</a>
                         <c:forEach var="product" items="${product}">
                             <form method="post" class="row g-3 was-validated d-flex justify-content-center" action="update">
                                 <div class="col-sm-12 p-3 ">
@@ -129,11 +130,12 @@
                                         </c:forEach>
                                     </select>
 
-                                    <a type="submit" href="/backend/product/edit/${product.magiay}" class="mt-3 btn btn-primary">edit</a>
+                                    <a type="submit" href="/backend/product/edit/${product.magiay}" class="mt-3 btn btn-primary">Sửa sản phẩm</a>
                                 </div>
                             </form>
 
                         </c:forEach>
+
                     </div>
                     <!-- end card -->
                 </div>

@@ -18,10 +18,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="#0">Product</a>
+                                    <a href="#0">Sản Phẩm</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    List
+                                    Danh sách
                                 </li>
                             </ol>
                         </nav>
@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card-style mb-30">
-                        <h6 class="mb-10"></h6>
+                        <a class="" href="/backend/product/create"><h6 class="mb-10">Thêm sản phẩm</h6></a>
                         <p class="text-sm text-danger mb-20">
                             ${message}
                         </p>
@@ -67,12 +67,12 @@
                                         <td class="min-width"><p>${product.size}</p></td>
                                         <td class="min-width"><p>${product.mausac}</p></td>
                                         <td class="min-width"><p>${product.maloaigiay}</p></td>
-                                        <td class="cell"><a class="btn-sm app-btn-secondary"
-                                                            href="/backend/product/edit/${product.magiay}">Edit</a> <a
-                                                class="btn-sm app-btn-secondary"
-                                                href="/backend/product/delete/${product.magiay}">Delete</a> <a
-                                                class="btn-sm app-btn-secondary"
-                                                href="/backend/product/details/${product.magiay}">View</a></td>
+                                        <td class="min-width"><a class="text-success btn-lg"
+                                                            href="/backend/product/edit/${product.magiay}"><i class="lni lni-pencil"></i></a> <a
+                                                class="text-danger btn-lg"
+                                                href="/backend/product/delete/${product.magiay}"><i class="lni lni-trash-can"></i></a> <a
+                                                class="text-primary btn-lg"
+                                                href="/backend/product/details/${product.magiay}"><i class="lni lni-eye"></i></a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
