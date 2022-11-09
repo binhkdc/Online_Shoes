@@ -38,6 +38,7 @@ public class ShoppingCartController {
             model.addAttribute("message", "Giỏ hàng trống!!");
         }
 
+
         return "/shoppingCarts/list";
     }
 

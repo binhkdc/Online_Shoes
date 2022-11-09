@@ -37,6 +37,7 @@ public class SecurityConfiguration {
 //                .antMatchers("/backend/user/list").hasRole("ADMIN")
                 .antMatchers("/").hasAnyRole("ADMIN", "USER")
                 .antMatchers("/backend/**").hasRole("ADMIN")
+                .antMatchers("/shoppingCart/list").hasAnyRole("ADMIN", "USER")
                 .antMatchers("/anonymous*").anonymous()
                 .antMatchers("/backend/**").authenticated()
 

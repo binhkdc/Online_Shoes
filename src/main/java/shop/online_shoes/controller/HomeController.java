@@ -78,10 +78,11 @@ public class HomeController {
                         ProductDto productDtoList= productService.findById(value.getMagiay());
 
                         if (productDtoList != null) {
-                            productService.findById(value.getMagiay());
                             productDtoList.setUpdateSoluong(productDtoList.getSoluong()-value.getSoluong());
-                            if(productDtoList.getSoluong()<0){
-                                productDtoList.setSoluong(0);
+                            if(productDtoList.getUpdateSoluong()<0){
+                                productDtoList.setUpdateSoluong(0);
+                            }else{
+                                productDtoList.setSoluong(productDtoList.getSoluong()-value.getSoluong());
                             }
                             productService.updateSoluong(productDtoList);
                         }

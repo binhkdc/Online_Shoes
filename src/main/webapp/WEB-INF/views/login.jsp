@@ -28,7 +28,7 @@
                    class="form__input" placeholder="Enter a valid email address"/>
             <input type="password" name="password" id="form3Example4"
                    class="form__input" placeholder="Enter password"/>
-            <a class="form__link">Forgot your password?</a>
+<%--            <a class="form__link">Forgot your password?</a>--%>
             <button class="form__button button" type="submit">SIGN IN</button>
         </form>
     </div>

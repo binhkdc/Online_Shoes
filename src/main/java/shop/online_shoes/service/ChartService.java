@@ -20,7 +20,7 @@ public class ChartService {
         Statement sqlFile = conn.createStatement();
         try {
 
-            String selectSql = "SELECT  soluong FROM ct_hoadonxuat GROUP by magiay";
+            String selectSql = "SELECT SUM(ct_hoadonxuat.SoLuong) as soluong  FROM ct_hoadonxuat GROUP by ct_hoadonxuat.MaGiay";
             ResultSet resultSet = sqlFile.executeQuery(selectSql);
             while (resultSet.next()) {
                 list.add(resultSet.getString("soluong"));

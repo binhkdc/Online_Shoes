@@ -5,8 +5,8 @@
 <!--==================== HEADER ====================-->
 
 <style>
-    Result Skip Results Iframe
-    EDIT ON
+    /*Result Skip Results Iframe*/
+    /*EDIT ON*/
     .center {
         text-align: center;
     }
@@ -178,9 +178,6 @@
             </c:forEach>
         </div>
         <h2 class="section__title m-3">
-
-
-
         </h2>
         <div class="center" style="text-align: center">
             <div class="pagination">
@@ -216,7 +213,6 @@
                     </c:otherwise>
                 </c:choose>
             </div>
-
         </div>
     </section>
 

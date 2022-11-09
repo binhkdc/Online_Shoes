@@ -25,6 +25,9 @@
     <title>Nike website</title>
 </head>
 <body>
+<sec:authorize access="!isAuthenticated()">
+    <h1> bạn phải đăng nhập</h1>
+</sec:authorize>
 <sec:authorize access="isAuthenticated()">
 <h1>Giỏ hàng của tôi</h1>
 
